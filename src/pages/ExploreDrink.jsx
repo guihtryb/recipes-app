@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../components/Footer';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 function ExploreDrink() {
   return (
