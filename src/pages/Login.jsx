@@ -23,7 +23,11 @@ function Login() {
     default:
       return 0;
     }
-    console.log(validateEmail);
+  };
+
+  const handleClick = () => {
+    localStorage.setItem('mealsToken', 1);
+    localStorage.setItem('cocktailsToken', 1);
   };
 
   const MIN_PASSWORD_CHARACTERS = 6;
@@ -52,6 +56,7 @@ function Login() {
         data-testid="login-submit-btn"
         disabled={ !(password.length > MIN_PASSWORD_CHARACTERS
           && validateEmail) }
+        onClick={ handleClick }
       >
         Entrar
       </button>
