@@ -1,14 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-function Login(props) {
+function Login() {
   return (
-    <div />
+    <>
+      <input
+        type="email"
+        name="email-input"
+        id="email-input"
+        data-testid="email-input"
+      />
+      <input
+        type="password"
+        name="password-input"
+        id="password-input"
+        data-testid="password-input"
+      />
+      <button
+        type="button"
+        value="Entrar"
+        data-testid="login-submit-btn"
+      >
+        Entrar
+      </button>
+    </>
   );
 }
-
-Login.propTypes = {
-
-};
 
 export default Login;
