@@ -28,6 +28,10 @@ function Login() {
   const handleClick = () => {
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
+    const user = {
+      email,
+    };
+    localStorage.user = JSON.stringify(user);
   };
 
   const MIN_PASSWORD_CHARACTERS = 6;
