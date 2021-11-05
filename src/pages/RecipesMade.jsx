@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-function RecipesMade(props) {
+function RecipesMade() {
   return (
     <div />
   );
