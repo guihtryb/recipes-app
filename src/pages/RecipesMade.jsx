@@ -1,14 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Header from '../components/Header';
 
-function RecipesMade(props) {
+function RecipesMade() {
   return (
-    <div />
+    <Header title="Receitas Feitas" />
   );
 }
-
-RecipesMade.propTypes = {
-
-};
 
 export default RecipesMade;

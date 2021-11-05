@@ -1,14 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Header from '../components/Header';
 
-function DrinkRecipes(props) {
+function DrinkRecipes() {
   return (
-    <div />
+    <Header title="Bebidas" />
   );
 }
-
-DrinkRecipes.propTypes = {
-
-};
 
 export default DrinkRecipes;

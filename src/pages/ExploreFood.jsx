@@ -1,14 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Header from '../components/Header';
 
-function ExploreFood(props) {
+function ExploreFood() {
   return (
-    <div />
+    <Header title="Explorar Comidas" />
   );
 }
-
-ExploreFood.propTypes = {
-
-};
 
 export default ExploreFood;

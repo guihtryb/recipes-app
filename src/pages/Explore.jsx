@@ -1,14 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Header from '../components/Header';
 
-function Explore(props) {
+function Explore() {
   return (
-    <div />
+    <Header title="Explorar" />
   );
 }
-
-Explore.propTypes = {
-
-};
 
 export default Explore;

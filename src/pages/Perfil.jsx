@@ -1,14 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Header from '../components/Header';
 
-function Perfil(props) {
+function Perfil() {
   return (
-    <div />
+    <Header title="Perfil" />
   );
 }
-
-Perfil.propTypes = {
-
-};
 
 export default Perfil;
