@@ -1,9 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Footer from '../components/Footer';
+// import PropTypes from 'prop-types';
 
-function ExploreDrink(props) {
+function ExploreDrink() {
   return (
-    <div />
+    <div>
+      <Footer />
+    </div>
   );
 }
 
