@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Login() {
+function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [validateEmail, setValidateEmail] = useState(false);
@@ -26,12 +26,14 @@ function Login() {
   };
 
   const handleClick = () => {
+    const { history } = props;
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
     const user = {
       email,
     };
     localStorage.user = JSON.stringify(user);
+    history.push('./comidas');
   };
 
   const MIN_PASSWORD_CHARACTERS = 6;
