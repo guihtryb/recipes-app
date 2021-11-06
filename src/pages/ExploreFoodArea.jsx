@@ -1,9 +1,14 @@
 import React from 'react';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
+// import PropTypes from 'prop-types';
 
 function ExploreFoodArea() {
   return (
-    <Header title="Explorar Origem" />
+    <div>
+      <Header title="Explorar Origem" />
+      <Footer />
+    </div>
   );
 }
 

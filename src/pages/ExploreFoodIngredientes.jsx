@@ -1,9 +1,14 @@
 import React from 'react';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
+// import PropTypes from 'prop-types';
 
 function ExploreFoodIngredientes() {
   return (
-    <Header title="Explorar Ingredientes" />
+    <div>
+      <Header title="Explorar Ingredientes" />
+      <Footer />
+    </div>
   );
 }
 
