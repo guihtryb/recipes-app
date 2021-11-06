@@ -1,14 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Header from '../components/Header';
+// import PropTypes from 'prop-types';
 
-function Favorites(props) {
+function Favorites() {
   return (
-    <div />
+    <Header title="Receitas Favoritas" />
   );
 }
-
-Favorites.propTypes = {
-
-};
 
 export default Favorites;

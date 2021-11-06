@@ -1,14 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+// import PropTypes from 'prop-types';
 
-function Explore(props) {
+function Explore() {
   return (
-    <div />
+    <div>
+      <Header title="Explorar" />
+      <Footer />
+    </div>
   );
 }
-
-Explore.propTypes = {
-
-};
 
 export default Explore;
