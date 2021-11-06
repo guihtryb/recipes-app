@@ -7,8 +7,4 @@ function RecipeInProgress() {
   );
 }
 
-RecipeInProgress.propTypes = {
-
-};
-
 export default RecipeInProgress;

@@ -38,7 +38,6 @@ function Login(props) {
   };
 
   const MIN_PASSWORD_CHARACTERS = 6;
-
   return (
     <div data-testid="login-page">
       <input

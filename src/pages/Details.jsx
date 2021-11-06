@@ -3,14 +3,8 @@ import React from 'react';
 
 function Details() {
   return (
-    <div>
-      f
-    </div>
+    <div />
   );
 }
-
-Details.propTypes = {
-
-};
 
 export default Details;
