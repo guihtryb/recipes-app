@@ -15,7 +15,7 @@ export default function Header({ title }) {
     if (title.includes('Receitas')) setIsExploring(true);
     if (title.includes('Perfil')) setIsExploring(true);
     if (title.includes('Origem')) setIsExploring(false);
-    if (title.includes('Favoritas')) setIsExploring(true);
+    // if (title.includes('Favoritas')) setIsExploring(true);
   }, [title]);
 
   if (redirect) return <Redirect to="/perfil" />;

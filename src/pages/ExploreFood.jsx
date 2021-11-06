@@ -8,7 +8,7 @@ function ExploreFood() {
     <div>
       <Header title="Explorar Comidas" />
       <Footer />
-    </div
+    </div>
   );
 }
 

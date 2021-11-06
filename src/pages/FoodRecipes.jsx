@@ -3,7 +3,6 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 // import PropTypes from 'prop-types';
 
-
 function FoodRecipes() {
   return (
     <div>
