@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import searchIcon from '../images/searchIcon.svg';
 import profileIcon from '../images/profileIcon.svg';
+import SearchBar from './SearchBar';
 
 export default function Header({ title }) {
   const [redirect, setRedirect] = useState(false);
@@ -46,24 +47,10 @@ export default function Header({ title }) {
 
       {
         searchBar && (
-          <div>
-            <input
-              type="text"
-              onChange={ (e) => setSearchText(e.target.value) }
-              value={ searchText }
-              data-testid="search-input"
-            />
-            <input type="radio" name="" id="" data-testid="ingredient-search-radio" />
-            <input type="radio" name="" id="" data-testid="name-search-radio" />
-            <input type="radio" name="" id="" data-testid="first-letter-search-radio" />
-
-            <button
-              type="button"
-              data-testid="exec-search-btn"
-            >
-              Buscar
-            </button>
-          </div>)
+          <SearchBar
+            setSearchText={ setSearchText }
+            searchText={ searchText }
+          />)
       }
 
     </header>
