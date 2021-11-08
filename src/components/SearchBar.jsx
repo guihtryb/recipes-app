@@ -8,7 +8,7 @@ export default function SearchBar({
   const searchRecipes = ({ target }, option) => {
     const text = target.value;
     if (option === 'f' && text.length > 1) {
-      global.alert('Texto deve conter apenas uma letra!');
+      return global.alert('Sua busca deve conter somente 1 (um) caracter');
     }
     setSearchText(target.value);
   };
