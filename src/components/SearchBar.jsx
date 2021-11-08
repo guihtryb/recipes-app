@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router';
 import Context from '../context/Context';
 import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 
@@ -7,17 +8,24 @@ export default function SearchBar({ title }) {
   const [type, setType] = useState('');
   const [searchText, setSearchText] = useState('');
   const [checkValue, setCheckValue] = useState('');
-
+  const history = useHistory();
   const { setSearchData } = useContext(Context);
 
   const handleSearch = async (typeSelected, option, search) => {
     if (title === 'Comidas') {
       const data = await fetchFoodReq(typeSelected, option, search);
       setSearchData(data);
+
+      if (data.meals.length === 1) {
+        history.push(`/comidas/${data.meals[0].idMeal}`);
+      }
     }
     if (title === 'Bebidas') {
       const data = await fetchDrinkReq(typeSelected, option, search);
       setSearchData(data);
+      if (data.drinks.length === 1) {
+        history.push(`/bebidas/${data.drinks[0].idDrink}`);
+      }
     }
   };
 
