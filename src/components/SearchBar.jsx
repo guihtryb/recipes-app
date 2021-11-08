@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-export default function SearchBar({ setSearchText, searchText, setCheckValue }) {
+export default function SearchBar({
+  setSearchText, searchText, checkValue, setCheckValue, handleSearch }) {
+  const [type, setType] = useState('');
+
+  const searchRecipes = ({ target }, option) => {
+    const text = target.value;
+    if (option === 'f' && text.length > 1) {
+      global.alert('Texto deve conter apenas uma letra!');
+    }
+    setSearchText(target.value);
+  };
+
   return (
     <form>
       <input
         type="text"
-        onChange={ (e) => setSearchText(e.target.value) }
+        onChange={ (e) => searchRecipes(e, checkValue) }
         value={ searchText }
         data-testid="search-input"
       />
@@ -18,6 +29,7 @@ export default function SearchBar({ setSearchText, searchText, setCheckValue }) 
             type="radio"
             value="i"
             name="searchBar"
+            onClick={ () => setType('filter') }
             id="ingredientID"
             data-testid="ingredient-search-radio"
           />
@@ -29,6 +41,7 @@ export default function SearchBar({ setSearchText, searchText, setCheckValue }) 
             type="radio"
             value="s"
             name="searchBar"
+            onClick={ () => setType('search') }
             id="nameID"
             data-testid="name-search-radio"
           />
@@ -37,19 +50,19 @@ export default function SearchBar({ setSearchText, searchText, setCheckValue }) 
         <label htmlFor="firstID">
           <input
             type="radio"
-            value="a"
+            value="f"
             name="searchBar"
+            onClick={ () => setType('search') }
             id="firstID"
             data-testid="first-letter-search-radio"
           />
           Primeira letra
         </label>
-
       </div>
-
       <button
         type="button"
         data-testid="exec-search-btn"
+        onClick={ () => handleSearch(type, checkValue, searchText) }
       >
         Buscar
       </button>
@@ -60,5 +73,7 @@ export default function SearchBar({ setSearchText, searchText, setCheckValue }) 
 SearchBar.propTypes = {
   setSearchText: PropTypes.func.isRequired,
   setCheckValue: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+  checkValue: PropTypes.string.isRequired,
   searchText: PropTypes.string.isRequired,
 };
