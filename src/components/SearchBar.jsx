@@ -1,9 +1,25 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import Context from '../context/Context';
+import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 
-export default function SearchBar({
-  setSearchText, searchText, checkValue, setCheckValue, handleSearch }) {
+export default function SearchBar({ title }) {
   const [type, setType] = useState('');
+  const [searchText, setSearchText] = useState('');
+  const [checkValue, setCheckValue] = useState('');
+
+  const { setSearchData } = useContext(Context);
+
+  const handleSearch = async (typeSelected, option, search) => {
+    if (title === 'Comidas') {
+      const data = await fetchFoodReq(typeSelected, option, search);
+      setSearchData(data);
+    }
+    if (title === 'Bebidas') {
+      const data = await fetchDrinkReq(typeSelected, option, search);
+      setSearchData(data);
+    }
+  };
 
   const searchRecipes = ({ target }, option) => {
     const text = target.value;
@@ -71,9 +87,5 @@ export default function SearchBar({
 }
 
 SearchBar.propTypes = {
-  setSearchText: PropTypes.func.isRequired,
-  setCheckValue: PropTypes.func.isRequired,
-  handleSearch: PropTypes.func.isRequired,
-  checkValue: PropTypes.string.isRequired,
-  searchText: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
