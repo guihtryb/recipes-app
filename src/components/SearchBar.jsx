@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function SearchBar({ setSearchText, searchText }) {
+export default function SearchBar({ setSearchText, searchText, setCheckValue }) {
   return (
     <form>
       <input
@@ -11,12 +11,12 @@ export default function SearchBar({ setSearchText, searchText }) {
         data-testid="search-input"
       />
       <div
-        onChange
+        onChange={ (e) => setCheckValue(e.target.value) }
       >
         <label htmlFor="ingredientID">
           <input
             type="radio"
-            value="ingredientID"
+            value="i"
             name="searchBar"
             id="ingredientID"
             data-testid="ingredient-search-radio"
@@ -27,7 +27,7 @@ export default function SearchBar({ setSearchText, searchText }) {
 
           <input
             type="radio"
-            value="name"
+            value="s"
             name="searchBar"
             id="nameID"
             data-testid="name-search-radio"
@@ -37,7 +37,7 @@ export default function SearchBar({ setSearchText, searchText }) {
         <label htmlFor="firstID">
           <input
             type="radio"
-            value="first"
+            value="a"
             name="searchBar"
             id="firstID"
             data-testid="first-letter-search-radio"
@@ -59,5 +59,6 @@ export default function SearchBar({ setSearchText, searchText }) {
 
 SearchBar.propTypes = {
   setSearchText: PropTypes.func.isRequired,
+  setCheckValue: PropTypes.func.isRequired,
   searchText: PropTypes.string.isRequired,
 };

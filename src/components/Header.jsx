@@ -10,6 +10,7 @@ export default function Header({ title }) {
   const [searchBar, setSearchBar] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [isExploring, setIsExploring] = useState(false);
+  const [, setCheckValue] = useState('');
 
   useEffect(() => {
     if (title.includes('Explorar')) setIsExploring(true);
@@ -50,6 +51,7 @@ export default function Header({ title }) {
           <SearchBar
             setSearchText={ setSearchText }
             searchText={ searchText }
+            setCheckValue={ setCheckValue }
           />)
       }
 
