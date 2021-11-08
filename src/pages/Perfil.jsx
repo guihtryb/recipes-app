@@ -5,7 +5,8 @@ import Footer from '../components/Footer';
 // import PropTypes from 'prop-types';
 
 function Perfil() {
-  const userEmail = JSON.parse(localStorage.getItem('user')).email;
+  const userEmail = localStorage.getItem('user') !== null
+    ? JSON.parse(localStorage.getItem('user')).email : 'email';
   return (
     <div>
       <Header title="Perfil" />
