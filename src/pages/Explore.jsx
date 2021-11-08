@@ -1,14 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
-function Explore(props) {
+function Explore() {
   return (
-    <div />
+    <>
+      <button
+        type="button"
+        onClick={ () => <Redirect to="/explorar/comidas" /> }
+      >
+        Explorar Comidas
+      </button>
+      <button type="button">Explorar Bebidas</button>
+    </>
   );
 }
-
-Explore.propTypes = {
-
-};
 
 export default Explore;
