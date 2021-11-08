@@ -14,7 +14,8 @@ export default function SearchBar({ title }) {
   const handleSearch = async (typeSelected, option, search) => {
     if (title === 'Comidas') {
       const data = await fetchFoodReq(typeSelected, option, search);
-      setSearchData(data);
+      setSearchData(data.meals);
+      console.log(data.meals);
 
       if (data.meals.length === 1) {
         history.push(`/comidas/${data.meals[0].idMeal}`);
@@ -22,7 +23,7 @@ export default function SearchBar({ title }) {
     }
     if (title === 'Bebidas') {
       const data = await fetchDrinkReq(typeSelected, option, search);
-      setSearchData(data);
+      setSearchData(data.drinks);
       if (data.drinks.length === 1) {
         history.push(`/bebidas/${data.drinks[0].idDrink}`);
       }
