@@ -67,7 +67,7 @@ export const AppData = {
     },
     {
       title: 'Receitas',
-      items: await fetchFoodReq('search', 's', ''),
+      items: await fetchDrinkReq('search', 's', ''),
     },
   ],
 };
