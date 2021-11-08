@@ -1,20 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Context from './Context';
 
 function Provider({ children }) {
-  const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-
-  const value = {
-    data,
-    setData,
-    isLoading,
-    setIsLoading,
-  };
-
   return (
-    <Context.Provider value={ value }>
+    <Context.Provider>
       {children}
     </Context.Provider>
   );
