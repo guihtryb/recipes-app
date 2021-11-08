@@ -33,24 +33,39 @@ export default function Header({ title }) {
         />
       </button>
 
-      <p data-testid="page-title">{ title }</p>
+      <p data-testid="page-title">{title}</p>
 
-      { !isExploring
-      && (
-        <button
-          type="button"
-          onClick={ () => setSearchBar(!searchBar) }
-        >
-          <img src={ searchIcon } alt="Buscar" data-testid="search-top-btn" />
-        </button>)}
+      {!isExploring
+        && (
+          <button
+            type="button"
+            onClick={ () => setSearchBar(!searchBar) }
+          >
+            <img src={ searchIcon } alt="Buscar" data-testid="search-top-btn" />
+          </button>)}
 
-      { searchBar
-      && <input
-        type="text"
-        onChange={ (e) => setSearchText(e.target.value) }
-        value={ searchText }
-        data-testid="search-input"
-      />}
+      {
+        searchBar && (
+          <div>
+            <input
+              type="text"
+              onChange={ (e) => setSearchText(e.target.value) }
+              value={ searchText }
+              data-testid="search-input"
+            />
+            <input type="radio" name="" id="" data-testid="ingredient-search-radio" />
+            <input type="radio" name="" id="" data-testid="name-search-radio" />
+            <input type="radio" name="" id="" data-testid="first-letter-search-radio" />
+
+            <button
+              type="button"
+              data-testid="exec-search-btn"
+            >
+              Buscar
+            </button>
+          </div>)
+      }
+
     </header>
   );
 }
