@@ -3,12 +3,27 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import searchIcon from '../images/searchIcon.svg';
 import profileIcon from '../images/profileIcon.svg';
+import SearchBar from './SearchBar';
+import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 
 export default function Header({ title }) {
   const [redirect, setRedirect] = useState(false);
   const [searchBar, setSearchBar] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [isExploring, setIsExploring] = useState(false);
+  const [checkValue, setCheckValue] = useState('');
+  const [searchData, setSearchData] = useState([]);
+
+  const handleSearch = async (type, option, search) => {
+    if (title === 'Comidas') {
+      const data = await fetchFoodReq(type, option, search);
+      setSearchData(data);
+    }
+    if (title === 'Bebidas') {
+      const data = await fetchDrinkReq(type, option, search);
+      setSearchData(data);
+    }
+  };
 
   useEffect(() => {
     if (title.includes('Explorar')) setIsExploring(true);
@@ -33,24 +48,29 @@ export default function Header({ title }) {
         />
       </button>
 
-      <p data-testid="page-title">{ title }</p>
+      <p data-testid="page-title">{title}</p>
 
-      { !isExploring
-      && (
-        <button
-          type="button"
-          onClick={ () => setSearchBar(!searchBar) }
-        >
-          <img src={ searchIcon } alt="Buscar" data-testid="search-top-btn" />
-        </button>)}
+      {!isExploring
+        && (
+          <button
+            type="button"
+            onClick={ () => setSearchBar(!searchBar) }
+          >
+            <img src={ searchIcon } alt="Buscar" data-testid="search-top-btn" />
+          </button>)}
 
-      { searchBar
-      && <input
-        type="text"
-        onChange={ (e) => setSearchText(e.target.value) }
-        value={ searchText }
-        data-testid="search-input"
-      />}
+      {
+        searchBar && (
+          <SearchBar
+            setSearchText={ setSearchText }
+            searchText={ searchText }
+            setCheckValue={ setCheckValue }
+            checkValue={ checkValue }
+            handleSearch={ handleSearch }
+            searchData={ searchData }
+          />)
+      }
+
     </header>
   );
 }
