@@ -13,7 +13,7 @@ function CategoryButton(props) {
   const location = useLocation();
 
   const handleClick = async ({ target: { value } }) => {
-    // se o botão para selecionar a categoria for clicado 2x seguidas, searchData é limpado
+    // se o MESMO botão para selecionar a categoria for clicado 2x seguidas, searchData é limpo
 
     if (currentCategory === value) {
       setSearchData([]);
