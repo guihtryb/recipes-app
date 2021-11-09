@@ -53,7 +53,6 @@ function FoodRecipes() {
       <Footer />
     </div>
   );
-  // }
 }
 
 FoodRecipes.propTypes = {
