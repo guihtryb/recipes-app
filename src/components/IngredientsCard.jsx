@@ -6,7 +6,7 @@ import { BASE_DRINK_INGREDIENTS_IMAGE,
   BASE_FOOD_INGREDIENTS_IMAGE, fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 
 export default function IngredientsCard({ type, mainRote }) {
-  const { drinkLists, foodData } = useContext(Context);
+  const { drinkLists, foodData, setSearchData } = useContext(Context);
   const requisition = type === 'drinks' ? fetchDrinkReq : fetchFoodReq;
   const maxLength = 12;
   console.log(requisition);
@@ -27,7 +27,9 @@ export default function IngredientsCard({ type, mainRote }) {
     : BASE_FOOD_INGREDIENTS_IMAGE;
 
   const redirectCorrectly = async (ingredient) => {
-    const newSearchData = await requisition('filter', 'i', ingredient);
+    const dataRequisition = await requisition('filter', 'i', ingredient);
+    const newSearchData = dataRequisition[type];
+    setSearchData(newSearchData);
   };
 
   // setar o searchData
