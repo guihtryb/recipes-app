@@ -1,7 +1,7 @@
 const BASE_API_FOOD = 'https://www.themealdb.com/api/json/v1/1/';
 const BASE_API_DRINK = 'https://www.thecocktaildb.com/api/json/v1/1/';
-const BASE_FOOD_INGREDIENTS_IMAGE = 'https://www.themealdb.com/images/ingredients/';
-const BASE_DRINK_INGREDIENTS_IMAGE = 'https://www.thecocktaildb.com/images/ingredients/';
+export const BASE_FOOD_INGREDIENTS_IMAGE = 'https://www.themealdb.com/images/ingredients/';
+export const BASE_DRINK_INGREDIENTS_IMAGE = 'https://www.thecocktaildb.com/images/ingredients/';
 
 export async function fetchFoodReq(type, firstEndPoint, secondEndPoint) {
   const response = await
@@ -26,7 +26,8 @@ export async function fetchFoodIngImages(ingredient) {
 
 export async function fetchDrinksIngImages(ingredient) {
   const image = await fetch(`${BASE_DRINK_INGREDIENTS_IMAGE}${ingredient}.png`);
-  return image;
+  const imageUrl = image.url;
+  return imageUrl;
 }
 
 export const AppData = {
