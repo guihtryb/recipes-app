@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Context from '../context/Context';
+import '../style/IngredientsCards.css';
 import { BASE_DRINK_INGREDIENTS_IMAGE,
   BASE_FOOD_INGREDIENTS_IMAGE, fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 
