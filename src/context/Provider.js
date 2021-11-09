@@ -4,6 +4,7 @@ import Context from './Context';
 import { AppData } from '../services/APIs';
 
 function Provider({ children }) {
+  const [searchData, setSearchData] = useState([]);
   const [foodData, setFoodData] = useState([]);
   const [drinkLists, setDrinkLists] = useState([]);
 
@@ -26,6 +27,8 @@ function Provider({ children }) {
   const contextValue = {
     foodData,
     drinkLists,
+    searchData,
+    setSearchData,
   };
 
   return (
