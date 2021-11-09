@@ -4,26 +4,12 @@ import { Redirect } from 'react-router-dom';
 import searchIcon from '../images/searchIcon.svg';
 import profileIcon from '../images/profileIcon.svg';
 import SearchBar from './SearchBar';
-import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
+// import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 
 export default function Header({ title }) {
   const [redirect, setRedirect] = useState(false);
   const [searchBar, setSearchBar] = useState(false);
-  const [searchText, setSearchText] = useState('');
   const [isExploring, setIsExploring] = useState(false);
-  const [checkValue, setCheckValue] = useState('');
-  const [searchData, setSearchData] = useState([]);
-
-  const handleSearch = async (type, option, search) => {
-    if (title === 'Comidas') {
-      const data = await fetchFoodReq(type, option, search);
-      setSearchData(data);
-    }
-    if (title === 'Bebidas') {
-      const data = await fetchDrinkReq(type, option, search);
-      setSearchData(data);
-    }
-  };
 
   useEffect(() => {
     if (title.includes('Explorar')) setIsExploring(true);
@@ -62,12 +48,7 @@ export default function Header({ title }) {
       {
         searchBar && (
           <SearchBar
-            setSearchText={ setSearchText }
-            searchText={ searchText }
-            setCheckValue={ setCheckValue }
-            checkValue={ checkValue }
-            handleSearch={ handleSearch }
-            searchData={ searchData }
+            title={ title }
           />)
       }
 
