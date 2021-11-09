@@ -6,9 +6,9 @@ import { BASE_DRINK_INGREDIENTS_IMAGE,
 
 export default function IngredientsCard({ type }) {
   const { drinkLists, foodData } = useContext(Context);
+  const maxLength = 12;
   const ingredientsData = type === 'drinks'
     ? drinkLists[2] : foodData[2];
-
   if (!ingredientsData) {
     return (
       <h3> Loading...</h3>
@@ -25,14 +25,14 @@ export default function IngredientsCard({ type }) {
 
   return (
     <section className="ingredients-container">
-      { ingredients.map((ingredient, index) => index < 12 && (
+      { ingredients.map((ingredient, index) => index < maxLength && (
         <div
           className="ingredient-card"
           key={ ingredient }
           data-testid={ `${index}-ingredient-card` }
         >
           <img
-            src={ `${imgUrl}${ingredient}.png` }
+            src={ `${imgUrl}${ingredient}-Small.png` }
             alt="Ingredient"
             className="ingredient-card"
             data-testid={ `${index}-card-img` }
