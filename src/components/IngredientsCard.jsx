@@ -9,7 +9,7 @@ export default function IngredientsCard({ type, mainRote }) {
   const { drinkLists, foodData } = useContext(Context);
   const requisition = type === 'drinks' ? fetchDrinkReq : fetchFoodReq;
   const maxLength = 12;
-
+  console.log(requisition);
   const ingredientsData = type === 'drinks'
     ? drinkLists[2] : foodData[2];
   if (!ingredientsData) {
@@ -26,12 +26,10 @@ export default function IngredientsCard({ type, mainRote }) {
   const imgUrl = type === 'drinks' ? BASE_DRINK_INGREDIENTS_IMAGE
     : BASE_FOOD_INGREDIENTS_IMAGE;
 
-  const redirectCorrectly = () => {
+  const redirectCorrectly = async (ingredient) => {
+    const newSearchData = await requisition('filter', 'i', ingredient);
   };
-  // chamar uma requisição com
-  // - typeSelected(search || filter)
-  // - caracter do checkbutton ('i')
-  // - o nome do ingrediente
+
   // setar o searchData
 
   return (
@@ -39,7 +37,7 @@ export default function IngredientsCard({ type, mainRote }) {
       { ingredients.map((ingredient, index) => index < maxLength && (
         <Link
           to={ `/${mainRote}` }
-          onClick={ redirectCorrectly }
+          onClick={ () => redirectCorrectly(ingredient) }
         >
           <div
             className="ingredient-card"
