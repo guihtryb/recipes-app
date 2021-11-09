@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Context from '../context/Context';
 import { BASE_DRINK_INGREDIENTS_IMAGE,
-  BASE_FOOD_INGREDIENTS_IMAGE } from '../services/APIs';
+  BASE_FOOD_INGREDIENTS_IMAGE, fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 
-export default function IngredientsCard({ type }) {
+export default function IngredientsCard({ type, mainRote }) {
   const { drinkLists, foodData } = useContext(Context);
+  const requisition = type === 'drinks' ? fetchDrinkReq : fetchFoodReq;
   const maxLength = 12;
+
   const ingredientsData = type === 'drinks'
     ? drinkLists[2] : foodData[2];
   if (!ingredientsData) {
@@ -23,27 +26,40 @@ export default function IngredientsCard({ type }) {
   const imgUrl = type === 'drinks' ? BASE_DRINK_INGREDIENTS_IMAGE
     : BASE_FOOD_INGREDIENTS_IMAGE;
 
+  const redirectCorrectly = () => {
+  };
+  // chamar uma requisição com
+  // - typeSelected(search || filter)
+  // - caracter do checkbutton ('i')
+  // - o nome do ingrediente
+  // setar o searchData
+
   return (
     <section className="ingredients-container">
       { ingredients.map((ingredient, index) => index < maxLength && (
-        <div
-          className="ingredient-card"
-          key={ ingredient }
-          data-testid={ `${index}-ingredient-card` }
+        <Link
+          to={ `/${mainRote}` }
+          onClick={ redirectCorrectly }
         >
-          <img
-            src={ `${imgUrl}${ingredient}-Small.png` }
-            alt="Ingredient"
+          <div
             className="ingredient-card"
-            data-testid={ `${index}-card-img` }
-          />
-          <span
-            className="ingredient-name"
-            data-testid={ `${index}-card-name` }
+            key={ ingredient }
+            data-testid={ `${index}-ingredient-card` }
           >
-            {ingredient}
-          </span>
-        </div>
+            <img
+              src={ `${imgUrl}${ingredient}-Small.png` }
+              alt="Ingredient"
+              className="ingredient-card"
+              data-testid={ `${index}-card-img` }
+            />
+            <span
+              className="ingredient-name"
+              data-testid={ `${index}-card-name` }
+            >
+              {ingredient}
+            </span>
+          </div>
+        </Link>
       )) }
     </section>
   );
@@ -51,4 +67,5 @@ export default function IngredientsCard({ type }) {
 
 IngredientsCard.propTypes = {
   type: PropTypes.string.isRequired,
+  mainRote: PropTypes.string.isRequired,
 };

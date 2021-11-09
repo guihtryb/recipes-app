@@ -8,7 +8,7 @@ function ExploreFoodIngredientes() {
   return (
     <div>
       <Header title="Explorar Ingredientes" />
-      <IngredientsCard type="meals" />
+      <IngredientsCard type="meals" mainRote="comidas" />
       <Footer />
     </div>
   );
