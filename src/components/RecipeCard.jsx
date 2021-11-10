@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 function RecipeCard({ thumb, name, recipeIndex, recipeId }) {
   // https://stackoverflow.com/questions/42253277/react-router-v4-how-to-get-current-route
   const location = useLocation();
-  const rota = location.pathname === '/comidas' ? 'comidas' : 'bebidas';
+  const rota = location.pathname.includes('/comidas') ? 'comidas' : 'bebidas';
 
   return (
     <Link to={ `/${rota}/${recipeId}` }>

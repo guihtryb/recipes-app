@@ -3,7 +3,9 @@ import React from 'react';
 
 function Details() {
   return (
-    <div />
+    <div>
+      Say hi
+    </div>
   );
 }
 

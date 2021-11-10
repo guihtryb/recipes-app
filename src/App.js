@@ -67,10 +67,7 @@ function App() {
           render={ (props) => <RecipeInProgress { ...props } /> }
         />
         <Route exact path="/" component={ Login } />
-        <Route
-          path={ undefined }
-          component={ NotFound }
-        />
+        <Route component={ NotFound } />
       </Switch>
     </Provider>
   );
