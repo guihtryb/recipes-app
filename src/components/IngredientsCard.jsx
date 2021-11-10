@@ -1,7 +1,9 @@
+/* eslint-disable react/self-closing-comp */
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Context from '../context/Context';
+import '../style/IngredientsCards.css';
 import { BASE_DRINK_INGREDIENTS_IMAGE,
   BASE_FOOD_INGREDIENTS_IMAGE, fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 
@@ -9,12 +11,14 @@ export default function IngredientsCard({ type, mainRote }) {
   const { drinkLists, foodData, setSearchData } = useContext(Context);
   const requisition = type === 'drinks' ? fetchDrinkReq : fetchFoodReq;
   const maxLength = 12;
-  console.log(requisition);
+  const loadingGif = type === 'drinks' ? 'https://media3.giphy.com/media/3og0IB9TepluVHcMFy/giphy.gif?cid=ecf05e476hxg8v2h9y8cm299vb7nwfm1abzquj84z7kqhm06&rid=giphy.gif&ct=g' : 'https://media0.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif?cid=ecf05e4739n2hlkxm6a8ymnheguv7bxk3f5m6wag9ocwigzy&rid=giphy.gif&ct=g';
   const ingredientsData = type === 'drinks'
     ? drinkLists[2] : foodData[2];
   if (!ingredientsData) {
     return (
-      <h3> Loading...</h3>
+      <div>
+        <img src={ loadingGif } alt="" className="loading-gif" />
+      </div>
     );
   }
 
@@ -31,8 +35,6 @@ export default function IngredientsCard({ type, mainRote }) {
     const newSearchData = dataRequisition[type];
     setSearchData(newSearchData);
   };
-
-  // setar o searchData
 
   return (
     <section className="ingredients-container">
