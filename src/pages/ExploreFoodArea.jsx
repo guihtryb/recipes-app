@@ -51,7 +51,7 @@ function ExploreFoodArea() {
                 recipeIndex={ index }
               />
             </Link>
-        )) : searchData.meals.map((data, index) => index < maxLength
+          )) : searchData.meals.map((data, index) => index < maxLength
       && (
         <Link to={ `/comidas/${data.idMeal}` } key={ data.idMeal }>
           <RecipeCard
