@@ -34,6 +34,7 @@ function FoodRecipes() {
             name={ meal.strMeal }
             thumb={ meal.strMealThumb }
             recipeIndex={ index }
+            recipeId={ meal.idMeal }
           />
         ))) }
 
@@ -43,6 +44,7 @@ function FoodRecipes() {
           name={ data.strMeal }
           thumb={ data.strMealThumb }
           recipeIndex={ index }
+          recipeId={ data.idMeal }
         />
       )) : receitasSearchComidas && receitasSearchComidas.map((food, index) => (
         <RecipeCard
@@ -50,6 +52,7 @@ function FoodRecipes() {
           name={ food.strMeal }
           thumb={ food.strMealThumb }
           recipeIndex={ index }
+          recipeId={ food.idMeal }
         />
       ))}
       <Footer />

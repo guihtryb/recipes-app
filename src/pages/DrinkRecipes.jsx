@@ -33,6 +33,7 @@ function DrinkRecipes() {
             name={ bebida.strDrink }
             thumb={ bebida.strDrinkThumb }
             recipeIndex={ index }
+            recipeId={ bebida.idDrink }
           />
         ))) }
       {searchData.drinks ? receitasCategoriasBebidas.map((drink, index) => (
@@ -41,6 +42,7 @@ function DrinkRecipes() {
           name={ drink.strDrink }
           thumb={ drink.strDrinkThumb }
           recipeIndex={ index }
+          recipeId={ drink.idDrink }
         />
       )) : receitasSearchBebidas && receitasSearchBebidas.map((data, index) => (
         index < lastRenderedDrinkIndex && <RecipeCard
@@ -48,6 +50,7 @@ function DrinkRecipes() {
           name={ data.strDrink }
           thumb={ data.strDrinkThumb }
           recipeIndex={ index }
+          recipeId={ data.idDrink }
         />
       ))}
       <Footer />
