@@ -1,4 +1,6 @@
+/* eslint-disable indent */
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Context from '../context/Context';
@@ -39,22 +41,27 @@ function ExploreFoodArea() {
           </option>
         )) }
       </select>
-      {!searchData.meals ? foodRecipes.map((meal, index) => (
-        index < maxLength
-        && <RecipeCard
-          key={ meal.idMeal }
-          name={ meal.strMeal }
-          thumb={ meal.strMealThumb }
-          recipeIndex={ index }
-        />
-      )) : searchData.meals.map((data, index) => index < maxLength
+      {!searchData.meals ? foodRecipes
+        .map((meal, index) => index < maxLength
+          && (
+            <Link to={ `/comidas/${meal.idMeal}` } key={ meal.idMeal }>
+              <RecipeCard
+                name={ meal.strMeal }
+                thumb={ meal.strMealThumb }
+                recipeIndex={ index }
+              />
+            </Link>
+        )) : searchData.meals.map((data, index) => index < maxLength
       && (
-        <RecipeCard
-          key={ data.idMeal }
-          name={ data.strMeal }
-          thumb={ data.strMealThumb }
-          recipeIndex={ index }
-        />
+        <Link to={ `/comidas/${data.idMeal}` } key={ data.idMeal }>
+          <RecipeCard
+            key={ data.idMeal }
+            name={ data.strMeal }
+            thumb={ data.strMealThumb }
+            recipeIndex={ index }
+          />
+        </Link>
+
       ))}
       <Footer />
     </div>
