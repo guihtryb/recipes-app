@@ -7,8 +7,6 @@ import Context from '../context/Context';
 import RecipeCard from '../components/RecipeCard';
 import { fetchFoodReq } from '../services/APIs';
 
-// import PropTypes from 'prop-types';
-
 function ExploreFoodArea() {
   const { foodData, setSearchData, searchData } = useContext(Context);
   const areaData = foodData[1];
@@ -21,6 +19,10 @@ function ExploreFoodArea() {
     const newSearchData = await fetchFoodReq('filter', 'a', searchedArea);
     setSearchData(newSearchData);
   };
+
+  // Implementar option All para o dropdown
+  // fazer condição para reconhecer se searchedArea === All
+  // fazer uma requisição com os parametros 'search', 's' e ''
 
   if (!area) return <img className="loading-gif" src="https://media0.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif?cid=ecf05e4739n2hlkxm6a8ymnheguv7bxk3f5m6wag9ocwigzy&rid=giphy.gif&ct=g" alt="" />;
   return (
