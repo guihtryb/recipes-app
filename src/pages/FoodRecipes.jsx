@@ -25,7 +25,7 @@ function FoodRecipes() {
       { categoriasComidas && categoriasComidas.map((category) => (
         <FilterByCategoryButton category={ category } key={ category.strCategory } />
       )) }
-      {searchData.length === 0
+      {!searchData.length
         && (receitasComidas && receitasComidas.map((meal, index) => (
           <RecipeCard
             key={ meal.idMeal }
