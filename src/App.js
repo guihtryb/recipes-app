@@ -17,6 +17,7 @@ import Login from './pages/Login';
 import Perfil from './pages/Perfil';
 import RecipeInProgress from './pages/RecipeInProgress';
 import RecipesMade from './pages/RecipesMade';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -65,7 +66,11 @@ function App() {
           path="/bebidas/:id/in-progress"
           render={ (props) => <RecipeInProgress { ...props } /> }
         />
-        <Route path="/" component={ Login } />
+        <Route exact path="/" component={ Login } />
+        <Route
+          path={ undefined }
+          component={ NotFound }
+        />
       </Switch>
     </Provider>
   );

@@ -1,0 +1,22 @@
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.not-found-title {
+  font-size: calc(100% + 4.8vmin);
+  margin: auto;
+  text-align: center;
+}
+
+.not-found-subtitle {
+  font-size: calc(60% + 0.8vmin);
+  margin-top: -40px;
+  text-align: center;
+}
+
+.not-found-gif {
+  margin: auto;
+  width: 300px;
+}
