@@ -22,7 +22,7 @@ function Login(props) {
       setPassword(value);
       break;
     default:
-      return 0;
+      return null;
     }
   };
 
