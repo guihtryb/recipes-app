@@ -5,6 +5,7 @@ import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 function Details() {
   const [detailsData, setDetailsData] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+  const [measures, setMeasures] = useState([]);
 
   const location = useLocation();
   const path = location.pathname;
@@ -23,23 +24,25 @@ function Details() {
   }, [type, requisition, id]);
 
   useEffect(() => {
-    const getIngredients = async () => {
+    const getKeyValues = async (keySearched, setData) => {
       const response = await requisition('lookup', 'i', id);
       const recipeDetails = response[type][0];
-
       const searchedKey = Object.entries(recipeDetails)
-        .filter((item) => (item[0].includes('Ingredient')
-        && item[1].length ? item : null));
+        .filter((item) => (item[0].includes(keySearched)
+        && item[1] !== null ? item : null));
+
       const ingredientesData = searchedKey.map((item) => item[1]);
-      setIngredients(ingredientesData);
+      setData(ingredientesData);
     };
-    getIngredients();
+    getKeyValues('Ingredient', setIngredients);
+    getKeyValues('Measure', setMeasures);
   }, [type, requisition, id]);
 
-  if (!detailsData || !ingredients) return <h3> Loading...</h3>;
-  // const tags = detailsData.strTags !== null && detailsData.strTags;
-  // const recommended = [tags && tags.includes(',') ? tags.split(',') : tags];
-  // console.log(recommended);
+  const tags = detailsData.strTags !== null && detailsData.strTags;
+  const recommended = [tags && tags.includes(',') ? tags.split(',') : tags];
+  console.log(recommended);
+
+  if (!detailsData || !ingredients || !measures) return <h3> Loading...</h3>;
 
   return (
     <section className="details-container">
@@ -87,11 +90,6 @@ function Details() {
       >
         { detailsData.strInstructions }
       </p>
-      {/* { type === 'meals' ? <video controls>
-        <source data-testid="video" src={ detailsData.strYoutube } type="video/mp4" />
-      </video>
-
-        : null }
       { recommended && recommended.map((item, index) => (
         <span
           key={ index }
@@ -99,7 +97,7 @@ function Details() {
         >
           { item }
         </span>
-      )) } */}
+      )) }
       <button type="button" data-testid="start-recipe-btn">
         Start
       </button>
