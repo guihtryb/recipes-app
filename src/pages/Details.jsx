@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 
+const recipeTypeToggle = (type, param1, param2) => (type === 'meals' ? param1 : param2);
+
 function Details() {
   const [detailsData, setDetailsData] = useState([]);
   const [ingredients, setIngredients] = useState([]);
@@ -11,8 +13,8 @@ function Details() {
   const path = location.pathname;
   const id = path.split('s/')[1];
   const type = path.includes('comidas') ? 'meals' : 'drinks';
-  const requisition = type === 'meals' ? fetchFoodReq : fetchDrinkReq;
-  const key = type === 'meals' ? 'Meal' : 'Drink';
+  const requisition = recipeTypeToggle(type, fetchFoodReq, fetchDrinkReq);
+  const key = recipeTypeToggle(type, 'Meal', 'Drink');
   useEffect(() => {
     const getRecipeDetails = async () => {
       const response = await requisition('lookup', 'i', id);
@@ -53,12 +55,15 @@ function Details() {
         alt=""
         data-testid="recipe-photo"
       />
-      <span
+      <h3
         className="recipe-title"
         data-testid="recipe-title"
       >
         {detailsData[`str${key}`]}
-      </span>
+      </h3>
+      <h4 data-testid="recipe-category">
+        { key === 'Drink' && detailsData.strAlcoholic }
+      </h4>
       <button
         type="button"
         data-testid="share-btn"
@@ -91,13 +96,13 @@ function Details() {
       >
         { detailsData.strInstructions }
       </p>
-      <iframe
+      {key !== 'Drink' && <iframe
         title="myFrame"
         width="420"
         height="315"
         src={ youtubeEmbed }
         data-testid="video"
-      />
+      />}
       { recommended && recommended.map((item, index) => (
         <span
           key={ index }
