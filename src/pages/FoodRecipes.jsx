@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import RecipeCard from '../components/RecipeCard';
 import FilterByCategoryButton from '../components/FilterByCategoryButton';
 import Context from '../context/Context';
+import FilterByAllButton from '../components/FilterByAllButton';
 // import PropTypes from 'prop-types';
 
 function FoodRecipes() {
@@ -25,6 +26,7 @@ function FoodRecipes() {
       { categoriasComidas && categoriasComidas.map((category) => (
         <FilterByCategoryButton category={ category } key={ category.strCategory } />
       )) }
+      <FilterByAllButton />
       {searchData.length === 0
         && (receitasComidas && receitasComidas.map((meal, index) => (
           <RecipeCard
