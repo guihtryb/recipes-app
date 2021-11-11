@@ -3,7 +3,6 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipeCard from '../components/RecipeCard';
 import FilterByCategoryButton from '../components/FilterByCategoryButton';
-import FilterByAllButton from '../components/FilterByAllButton';
 import Context from '../context/Context';
 // import PropTypes from 'prop-types';
 
@@ -26,7 +25,6 @@ function FoodRecipes() {
       { categoriasComidas && categoriasComidas.map((category) => (
         <FilterByCategoryButton category={ category } key={ category.strCategory } />
       )) }
-      <FilterByAllButton />
       {searchData.length === 0
         && (receitasComidas && receitasComidas.map((meal, index) => (
           <RecipeCard
@@ -43,8 +41,8 @@ function FoodRecipes() {
           key={ data.idMeal }
           name={ data.strMeal }
           thumb={ data.strMealThumb }
-          recipeIndex={ index }
           recipeId={ data.idMeal }
+          recipeIndex={ index }
         />
       )) : receitasSearchComidas && receitasSearchComidas.map((food, index) => (
         <RecipeCard
