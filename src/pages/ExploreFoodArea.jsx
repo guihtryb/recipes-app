@@ -1,13 +1,10 @@
 /* eslint-disable indent */
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Context from '../context/Context';
 import RecipeCard from '../components/RecipeCard';
 import { fetchFoodReq } from '../services/APIs';
-
-// import PropTypes from 'prop-types';
 
 function ExploreFoodArea() {
   const { foodData, setSearchData, searchData } = useContext(Context);
@@ -22,7 +19,7 @@ function ExploreFoodArea() {
     setSearchData(newSearchData);
   };
 
-  if (!area) return <img src="https://media0.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif?cid=ecf05e4739n2hlkxm6a8ymnheguv7bxk3f5m6wag9ocwigzy&rid=giphy.gif&ct=g" alt="" />;
+  if (!area) return <img className="loading-gif" src="https://media0.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif?cid=ecf05e4739n2hlkxm6a8ymnheguv7bxk3f5m6wag9ocwigzy&rid=giphy.gif&ct=g" alt="" />;
   return (
     <div>
       <Header title="Explorar Origem" />
@@ -31,6 +28,7 @@ function ExploreFoodArea() {
         data-testid="explore-by-area-dropdown"
         onChange={ ({ target }) => searchArea(target.value) }
       >
+        <option data-testid="All-option" value="All">All</option>
         { area.map((item) => (
           <option
             data-testid={ `${item.strArea}-option` }
@@ -44,24 +42,21 @@ function ExploreFoodArea() {
       {!searchData.meals ? foodRecipes
         .map((meal, index) => index < maxLength
           && (
-            <Link to={ `/comidas/${meal.idMeal}` } key={ meal.idMeal }>
-              <RecipeCard
-                name={ meal.strMeal }
-                thumb={ meal.strMealThumb }
-                recipeIndex={ index }
-              />
-            </Link>
+            <RecipeCard
+              name={ meal.strMeal }
+              thumb={ meal.strMealThumb }
+              recipeIndex={ index }
+              recipeId={ meal.idMeal }
+            />
           )) : searchData.meals.map((data, index) => index < maxLength
       && (
-        <Link to={ `/comidas/${data.idMeal}` } key={ data.idMeal }>
-          <RecipeCard
-            key={ data.idMeal }
-            name={ data.strMeal }
-            thumb={ data.strMealThumb }
-            recipeIndex={ index }
-          />
-        </Link>
-
+        <RecipeCard
+          key={ data.idMeal }
+          name={ data.strMeal }
+          thumb={ data.strMealThumb }
+          recipeIndex={ index }
+          recipeId={ data.idMeal }
+        />
       ))}
       <Footer />
     </div>
