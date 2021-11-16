@@ -31,7 +31,7 @@ export default function SearchBar({ title }) {
       }
       setSearchData(data.drinks);
       if (data.drinks.length === 1) {
-        // history.push(`/bebidas/${data.drinks[0].idDrink}`);
+        history.push(`/bebidas/${data.drinks[0].idDrink}`);
       }
     }
   };

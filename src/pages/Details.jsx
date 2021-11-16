@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 
+const recipeTypeToggle = (type, param1, param2) => (type === 'meals' ? param1 : param2);
+
 function Details() {
   const [detailsData, setDetailsData] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+  const [measures, setMeasures] = useState([]);
 
   const location = useLocation();
   const path = location.pathname;
   const id = path.split('s/')[1];
   const type = path.includes('comidas') ? 'meals' : 'drinks';
-  const requisition = type === 'meals' ? fetchFoodReq : fetchDrinkReq;
-  const key = type === 'meals' ? 'Meal' : 'Drink';
+  const requisition = recipeTypeToggle(type, fetchFoodReq, fetchDrinkReq);
+  const key = recipeTypeToggle(type, 'Meal', 'Drink');
   useEffect(() => {
     const getRecipeDetails = async () => {
       const response = await requisition('lookup', 'i', id);
@@ -23,23 +26,26 @@ function Details() {
   }, [type, requisition, id]);
 
   useEffect(() => {
-    const getIngredients = async () => {
+    const getKeyValues = async (keySearched, setData) => {
       const response = await requisition('lookup', 'i', id);
       const recipeDetails = response[type][0];
-
       const searchedKey = Object.entries(recipeDetails)
-        .filter((item) => (item[0].includes('Ingredient')
-        && item[1].length ? item : null));
+        .filter((item) => (item[0].includes(keySearched)
+        && item[1] ? item : null));
+
       const ingredientesData = searchedKey.map((item) => item[1]);
-      setIngredients(ingredientesData);
+      setData(ingredientesData);
     };
-    getIngredients();
+    getKeyValues('Ingredient', setIngredients);
+    getKeyValues('Measure', setMeasures);
   }, [type, requisition, id]);
 
   if (!detailsData || !ingredients) return <h3> Loading...</h3>;
-  // const tags = detailsData.strTags !== null && detailsData.strTags;
-  // const recommended = [tags && tags.includes(',') ? tags.split(',') : tags];
-  // console.log(recommended);
+
+  const tags = detailsData.strTags !== null && detailsData.strTags;
+  const recommended = [tags && tags.includes(',') ? tags.split(',') : tags];
+  const youtubeEmbed = detailsData.strYoutube
+    && detailsData.strYoutube.replace('watch?v=', 'embed/');
 
   return (
     <section className="details-container">
@@ -49,12 +55,15 @@ function Details() {
         alt=""
         data-testid="recipe-photo"
       />
-      <span
+      <h3
         className="recipe-title"
         data-testid="recipe-title"
       >
         {detailsData[`str${key}`]}
-      </span>
+      </h3>
+      <h4 data-testid="recipe-category">
+        { key === 'Drink' && detailsData.strAlcoholic }
+      </h4>
       <button
         type="button"
         data-testid="share-btn"
@@ -74,24 +83,26 @@ function Details() {
         { detailsData.strCategory }
       </p>
       { ingredients.map((ingredient, index) => (
-        <span
+        <p
           key={ ingredient }
           data-testid={ `${index}-ingredient-name-and-measure` }
           className="details-ingredient"
         >
-          { ingredient }
-        </span>)) }
+          {`-${ingredient} - ${measures[index]}` }
+        </p>)) }
       <p
         data-testid="instructions"
         className="instructions"
       >
         { detailsData.strInstructions }
       </p>
-      {/* { type === 'meals' ? <video controls>
-        <source data-testid="video" src={ detailsData.strYoutube } type="video/mp4" />
-      </video>
-
-        : null }
+      {key !== 'Drink' && <iframe
+        title="myFrame"
+        width="420"
+        height="315"
+        src={ youtubeEmbed }
+        data-testid="video"
+      />}
       { recommended && recommended.map((item, index) => (
         <span
           key={ index }
@@ -99,7 +110,7 @@ function Details() {
         >
           { item }
         </span>
-      )) } */}
+      )) }
       <button type="button" data-testid="start-recipe-btn">
         Start
       </button>
