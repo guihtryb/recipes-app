@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Context from '../context/Context';
 import Carousel from 'react-multi-carousel';
 import RecipeCard from '../components/RecipeCard';
 import 'react-multi-carousel/lib/styles.css';
@@ -23,7 +24,8 @@ const responsive = {
   },
 };
 
-function RecommendationCarousel() {
+function RecommendationCarousel({ type }) {
+  const { foodData, drinkListsx } = useContext(Context);
   return (
     <Carousel responsive={ responsive }>
       <div>Item 1</div>
