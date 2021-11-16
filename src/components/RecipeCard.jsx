@@ -15,6 +15,7 @@ function RecipeCard({ thumb, name, recipeIndex, recipeId }) {
           src={ thumb }
           alt={ `imagem do alimento ${name}` }
           data-testid={ `${recipeIndex}-card-img` }
+          width="300"
         />
       </div>
     </Link>

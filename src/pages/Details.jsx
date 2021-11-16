@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
+import RecommendationCarousel from './RecommendationCarousel';
 
 const recipeTypeToggle = (type, param1, param2) => (type === 'meals' ? param1 : param2);
 
@@ -19,7 +20,6 @@ function Details() {
     const getRecipeDetails = async () => {
       const response = await requisition('lookup', 'i', id);
       const recipeDetails = response[type][0];
-      console.log(recipeDetails);
       setDetailsData(recipeDetails);
     };
     getRecipeDetails();
@@ -54,6 +54,7 @@ function Details() {
         src={ detailsData[`str${key}Thumb`] }
         alt=""
         data-testid="recipe-photo"
+        width="300"
       />
       <h3
         className="recipe-title"
@@ -108,9 +109,12 @@ function Details() {
           key={ index }
           data-testid={ `${index}-recomendation-card` }
         >
+          { console.log(item) }
+          { console.log(detailsData) }
           { item }
         </span>
       )) }
+      <RecommendationCarousel type={ type } />
       <button type="button" data-testid="start-recipe-btn">
         Start
       </button>
