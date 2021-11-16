@@ -47,7 +47,7 @@ function RecommendationCarousel({ type }) {
           thumb={ recipe[`str${correctKey}Thumb`] }
           recipeIndex={ index }
           recipeId={ recipe[`id${correctKey}`] }
-          recipeCard
+          recipeRecommendation
         />
       ))}
     </Carousel>
