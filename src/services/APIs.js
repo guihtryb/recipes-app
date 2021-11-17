@@ -4,18 +4,39 @@ export const BASE_FOOD_INGREDIENTS_IMAGE = 'https://www.themealdb.com/images/ing
 export const BASE_DRINK_INGREDIENTS_IMAGE = 'https://www.thecocktaildb.com/images/ingredients/';
 
 export async function fetchFoodReq(type, firstEndPoint, secondEndPoint) {
-  const response = await
-  fetch(`${BASE_API_FOOD}${type}.php?${firstEndPoint}=${secondEndPoint}`);
+  let response = '';
+  if (secondEndPoint === 'random') {
+    response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+  } else {
+    response = await
+    fetch(`${BASE_API_FOOD}${type}.php?${firstEndPoint}=${secondEndPoint}`);
+  }
 
   const responseJson = await response.json();
   return responseJson;
 }
 
 export async function fetchDrinkReq(type, firstEndPoint, secondEndPoint) {
-  const response = await
-  fetch(`${BASE_API_DRINK}${type}.php?${firstEndPoint}=${secondEndPoint}`);
+  let response = '';
+  if (secondEndPoint === 'random') {
+    response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+  } else {
+    response = await
+    fetch(`${BASE_API_DRINK}${type}.php?${firstEndPoint}=${secondEndPoint}`);
+  }
 
   const responseJson = await response.json();
+  return responseJson;
+}
+
+export async function fetchRandomRecipe(type) {
+  let response = '';
+  if (type === 'comidas') {
+    response = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+  } else {
+    response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+  }
+  const responseJson = response.json();
   return responseJson;
 }
 
