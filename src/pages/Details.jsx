@@ -3,6 +3,7 @@ import { useLocation } from 'react-router';
 import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 import RecommendationCarousel from './RecommendationCarousel';
 import '../style/Details.css';
+import RecipeStatusButton from '../components/RecipeStatusButton';
 
 const recipeTypeToggle = (type, param1, param2) => (type === 'meals' ? param1 : param2);
 
@@ -10,6 +11,7 @@ function Details() {
   const [detailsData, setDetailsData] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
+
   // const [recipeStatus, setRecipeStatus] = useState({
   //   'Receita em Progresso': false,
   //   'Receita Feita': false,
@@ -119,16 +121,10 @@ function Details() {
         data-testid="video"
       />}
       <RecommendationCarousel type={ type } />
-      <button
-        className="details-start-recipe"
-        type="button"
-        data-testid="start-recipe-btn"
-        // onClick={ (e) => handleClick(e) }
-        // value={ recipeButton }
-        // { show{style: { visibility: 'hidden'}}}
-      >
-        Iniciar Receita
-      </button>
+      <RecipeStatusButton
+        recipeId={ id }
+        type={ type }
+      />
     </section>
   );
 }
