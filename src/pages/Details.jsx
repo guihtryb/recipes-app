@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
+import copy from 'clipboard-copy';
 import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 import RecommendationCarousel from './RecommendationCarousel';
 import '../style/Details.css';
@@ -11,22 +12,7 @@ function Details() {
   const [detailsData, setDetailsData] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
-
-  // const [recipeStatus, setRecipeStatus] = useState({
-  //   'Receita em Progresso': false,
-  //   'Receita Feita': false,
-  //   'Iniciar Receita': true,
-  // });
-
-  // const recipeButton = Object.entries(recipeStatus).filter((item) => item[1] === true);
-
-  // const handleClick = ({ target }) => {
-  //   const text = target.value;
-  //   if (text === 'Iniciar Receita') {
-  //     // setRecipeStatus(...recipeStatus, !recipeStatus[text]);
-  //     // setRecipeStatus({ 'Receita em Progresso': true });
-  //   }
-  // };
+  const [isSharing, setIsSharing] = useState('');
 
   const location = useLocation();
   const path = location.pathname;
@@ -63,6 +49,13 @@ function Details() {
   const youtubeEmbed = detailsData.strYoutube
     && detailsData.strYoutube.replace('watch?v=', 'embed/');
 
+  const handleShareButton = () => {
+    const THREE_SECONDS = 3000;
+    copy(`http://localhost:3000${path}`);
+    setIsSharing(', Link copiado!');
+    setTimeout(() => setIsSharing(''), THREE_SECONDS);
+  };
+
   return (
     <section className="details-container">
       <img
@@ -84,8 +77,9 @@ function Details() {
       <button
         type="button"
         data-testid="share-btn"
+        onClick={ handleShareButton }
       >
-        Share
+        {`Share ${isSharing}`}
       </button>
       <button
         type="button"
