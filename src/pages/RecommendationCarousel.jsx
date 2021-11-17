@@ -39,7 +39,6 @@ function RecommendationCarousel({ type }) {
 
   return (
     <Carousel responsive={ responsive }>
-      { console.log(recipes) }
       { recipes.map((recipe, index) => (
         <RecipeCard
           key={ recipe[`id${correctKey}`] }

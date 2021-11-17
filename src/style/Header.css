@@ -1,0 +1,15 @@
+button {
+  background-color: rgb(235, 91, 39);
+  border: none;
+  border-radius: 8px;
+  margin: 5px 2.5px;
+  outline: none;
+  padding: 10px;
+  transition: all ease 0.5s;
+}
+
+button:hover {
+  border-radius: 8px;
+  box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.6);
+  outline: none;
+}

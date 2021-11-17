@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import '../style/RecipeCard.css';
 
 function RecipeCard({ thumb, name, recipeIndex, recipeId, recipeRecommendation }) {
   // https://stackoverflow.com/questions/42253277/react-router-v4-how-to-get-current-route
@@ -21,7 +22,7 @@ function RecipeCard({ thumb, name, recipeIndex, recipeId, recipeRecommendation }
           src={ thumb }
           alt={ `imagem do alimento ${name}` }
           data-testid={ `${recipeIndex}-card-img` }
-          width="300"
+          className="recipe-image"
         />
       </div>
     </Link>
