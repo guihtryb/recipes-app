@@ -4,6 +4,8 @@ import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 import RecommendationCarousel from './RecommendationCarousel';
 import '../style/Details.css';
 import RecipeStatusButton from '../components/RecipeStatusButton';
+import ShareButton from '../components/ShareButton';
+import FavoriteButton from '../components/FavoriteButton';
 
 const recipeTypeToggle = (type, param1, param2) => (type === 'meals' ? param1 : param2);
 
@@ -11,22 +13,6 @@ function Details() {
   const [detailsData, setDetailsData] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
-
-  // const [recipeStatus, setRecipeStatus] = useState({
-  //   'Receita em Progresso': false,
-  //   'Receita Feita': false,
-  //   'Iniciar Receita': true,
-  // });
-
-  // const recipeButton = Object.entries(recipeStatus).filter((item) => item[1] === true);
-
-  // const handleClick = ({ target }) => {
-  //   const text = target.value;
-  //   if (text === 'Iniciar Receita') {
-  //     // setRecipeStatus(...recipeStatus, !recipeStatus[text]);
-  //     // setRecipeStatus({ 'Receita em Progresso': true });
-  //   }
-  // };
 
   const location = useLocation();
   const path = location.pathname;
@@ -81,18 +67,8 @@ function Details() {
       <h4 data-testid="recipe-category">
         { key === 'Drink' && detailsData.strAlcoholic }
       </h4>
-      <button
-        type="button"
-        data-testid="share-btn"
-      >
-        Share
-      </button>
-      <button
-        type="button"
-        data-testid="favorite-btn"
-      >
-        Favorite
-      </button>
+      <ShareButton testId="share-btn" route={ path } />
+      <FavoriteButton />
       <p
         data-testid="recipe-category"
         className="recipe-category"
