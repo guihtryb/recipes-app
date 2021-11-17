@@ -1,21 +1,5 @@
 import React from 'react';
 import Header from '../components/Header';
-// import PropTypes from 'prop-types';
-
-/* [{
-  id: id-da-receita,
-  type: comida-ou-bebida,
-  area: area-da-receita-ou-texto-vazio,
-  category: categoria-da-receita-ou-texto-vazio,
-  alcoholicOrNot: alcoholic-ou-non-alcoholic-ou-texto-vazio,
-  name: nome-da-receita,
-  image: imagem-da-receita
-}] */
-
-/*
-                objReceita.tags.reduce(
-                  (acc, tags) => (` ${acc}`),
-                  '')  */
 
 function RecipesMade() {
   const tavaNoLocalStored = JSON.parse(localStorage.getItem('doneRecipes'));
