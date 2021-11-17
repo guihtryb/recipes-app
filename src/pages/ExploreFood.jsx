@@ -10,7 +10,6 @@ function ExploreFood() {
   const history = useHistory();
   const randomRecipe = async () => {
     const randomId = (await fetchRandomRecipe('comidas')).meals[0].idMeal;
-    console.log(randomId);
     history.push(`/comidas/${randomId}`);
   };
   return (

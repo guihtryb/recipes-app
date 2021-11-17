@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import '../utils/index';
 
 export default function RecipeStatusButton({ recipeId, type }) {
@@ -8,6 +9,8 @@ export default function RecipeStatusButton({ recipeId, type }) {
   const [visibilityStatus, setVisibilityStatus] = useState('hidden');
   const [recipeStatus, setRecipeStatus] = useState('Iniciar Receita');
   const key = type === 'meals' ? 'meals' : 'cocktails';
+  const history = useHistory();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const doneRecipes = localStorage.getObj('doneRecipes');
@@ -20,7 +23,6 @@ export default function RecipeStatusButton({ recipeId, type }) {
       });
     }
   }, []);
-
   useEffect(() => {
     const compareId = () => {
       const doneRecipes = localStorage.getObj('doneRecipes');
@@ -37,6 +39,12 @@ export default function RecipeStatusButton({ recipeId, type }) {
     compareId();
   }, [recipeId, key]);
 
+  const handleClick = () => {
+    if (recipeStatus === 'Iniciar Receita') {
+      return history.push(`${pathname}/in-progress`);
+    }
+  };
+
   return (
     <div>
       <button
@@ -44,6 +52,7 @@ export default function RecipeStatusButton({ recipeId, type }) {
         data-testid="start-recipe-btn"
         className="details-start-recipe"
         style={ { visibility: visibilityStatus } }
+        onClick={ () => handleClick() }
       >
         {recipeStatus}
       </button>
