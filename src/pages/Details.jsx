@@ -9,14 +9,21 @@ function Details() {
   const [detailsData, setDetailsData] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
-  const [recipeStatus, setRecipeStatus] = useState([
-    { 'Receita em Progresso': false },
-    { 'Receita Feita': true },
-    { 'Iniciar Receita': false },
-  ]);
-  console.log(setRecipeStatus);
-  const recipeButton = Object.keys(recipeStatus
-    .find((item) => Object.values(item)[0] === true))[0];
+  // const [recipeStatus, setRecipeStatus] = useState({
+  //   'Receita em Progresso': false,
+  //   'Receita Feita': false,
+  //   'Iniciar Receita': true,
+  // });
+
+  // const recipeButton = Object.entries(recipeStatus).filter((item) => item[1] === true);
+
+  // const handleClick = ({ target }) => {
+  //   const text = target.value;
+  //   if (text === 'Iniciar Receita') {
+  //     // setRecipeStatus(...recipeStatus, !recipeStatus[text]);
+  //     // setRecipeStatus({ 'Receita em Progresso': true });
+  //   }
+  // };
 
   const location = useLocation();
   const path = location.pathname;
@@ -123,10 +130,11 @@ function Details() {
         className="details-start-recipe"
         type="button"
         data-testid="start-recipe-btn"
-        value="Iniciar Receita"
-        // { ...recipeButton === 'Receita Feita' ? { style : { visibility: 'hidden' } } : null }
+        // onClick={ (e) => handleClick(e) }
+        value={ recipeButton }
+        // { show{style: { visibility: 'hidden'}}}
       >
-        { recipeButton }
+        Iniciar Receita
       </button>
     </section>
   );

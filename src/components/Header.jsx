@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import searchIcon from '../images/searchIcon.svg';
 import profileIcon from '../images/profileIcon.svg';
 import SearchBar from './SearchBar';
-// import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
+import '../style/Header.css';
 
 export default function Header({ title }) {
   const [redirect, setRedirect] = useState(false);
@@ -22,10 +22,11 @@ export default function Header({ title }) {
   if (redirect) return <Redirect to="/perfil" />;
 
   return (
-    <header>
+    <header className="header-container">
       <button
         type="button"
         onClick={ () => setRedirect(true) }
+        className="profile-btn"
       >
         <img
           src={ profileIcon }
@@ -34,12 +35,18 @@ export default function Header({ title }) {
         />
       </button>
 
-      <p data-testid="page-title">{title}</p>
+      <p
+        data-testid="page-title"
+        className="page-title"
+      >
+        {title}
+      </p>
 
       {!isExploring
         && (
           <button
             type="button"
+            className="search-btn"
             onClick={ () => setSearchBar(!searchBar) }
           >
             <img src={ searchIcon } alt="Buscar" data-testid="search-top-btn" />
