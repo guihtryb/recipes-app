@@ -57,8 +57,6 @@ function Details() {
 
   if (!detailsData || !ingredients) return <h3> Loading...</h3>;
 
-  const tags = detailsData.strTags !== null && detailsData.strTags;
-  const recommended = [tags && tags.includes(',') ? tags.split(',') : tags];
   const youtubeEmbed = detailsData.strYoutube
     && detailsData.strYoutube.replace('watch?v=', 'embed/');
 
@@ -118,20 +116,13 @@ function Details() {
         src={ youtubeEmbed }
         data-testid="video"
       />}
-      { recommended && recommended.map((item, index) => (
-        <span
-          key={ index }
-          data-testid={ `${index}-recomendation-card` }
-        >
-          { item }
-        </span>
-      )) }
+
       <button
         className="details-start-recipe"
         type="button"
         data-testid="start-recipe-btn"
         // onClick={ (e) => handleClick(e) }
-        value={ recipeButton }
+        // value={ recipeButton }
         // { show{style: { visibility: 'hidden'}}}
       >
         Iniciar Receita
