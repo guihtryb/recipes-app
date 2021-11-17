@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
+import RecommendationCarousel from './RecommendationCarousel';
 import '../style/Details.css';
 
 const recipeTypeToggle = (type, param1, param2) => (type === 'meals' ? param1 : param2);
@@ -67,6 +68,7 @@ function Details() {
         src={ detailsData[`str${key}Thumb`] }
         alt=""
         data-testid="recipe-photo"
+        width="300"
       />
       <h3
         className="recipe-title"
@@ -116,7 +118,7 @@ function Details() {
         src={ youtubeEmbed }
         data-testid="video"
       />}
-
+      <RecommendationCarousel type={ type } />
       <button
         className="details-start-recipe"
         type="button"
