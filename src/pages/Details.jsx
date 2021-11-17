@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
-import copy from 'clipboard-copy';
 import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 import RecommendationCarousel from './RecommendationCarousel';
 import '../style/Details.css';
 import RecipeStatusButton from '../components/RecipeStatusButton';
+import ShareButton from '../components/ShareButton';
 
 const recipeTypeToggle = (type, param1, param2) => (type === 'meals' ? param1 : param2);
 
@@ -12,7 +12,6 @@ function Details() {
   const [detailsData, setDetailsData] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
-  const [isSharing, setIsSharing] = useState('');
 
   const location = useLocation();
   const path = location.pathname;
@@ -49,13 +48,6 @@ function Details() {
   const youtubeEmbed = detailsData.strYoutube
     && detailsData.strYoutube.replace('watch?v=', 'embed/');
 
-  const handleShareButton = () => {
-    const THREE_SECONDS = 3000;
-    copy(`http://localhost:3000${path}`);
-    setIsSharing(', Link copiado!');
-    setTimeout(() => setIsSharing(''), THREE_SECONDS);
-  };
-
   return (
     <section className="details-container">
       <img
@@ -74,13 +66,7 @@ function Details() {
       <h4 data-testid="recipe-category">
         { key === 'Drink' && detailsData.strAlcoholic }
       </h4>
-      <button
-        type="button"
-        data-testid="share-btn"
-        onClick={ handleShareButton }
-      >
-        {`Share ${isSharing}`}
-      </button>
+      <ShareButton testId="share-btn" route={ path } />
       <button
         type="button"
         data-testid="favorite-btn"

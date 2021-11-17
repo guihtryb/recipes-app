@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
+import ShareButton from '../components/ShareButton';
 
 function RecipesMade() {
   const tavaNoLocalStored = JSON.parse(localStorage.getItem('doneRecipes'));
@@ -74,13 +75,10 @@ function RecipesMade() {
               >
                 {objReceita.doneDate}
               </p>
-              <button
-                type="button"
-                data-testid={ `${index}-horizontal-share-btn` }
-                src="../src/images/shareIcon.svg"
-              >
-                compartilha
-              </button>
+              <ShareButton
+                testId={ `${index}-horizontal-share-btn` }
+                route={ `/${objReceita.type}s/${objReceita.id}` }
+              />
 
             </div>))}
 
