@@ -45,7 +45,10 @@ function RecipesMade() {
                   data-testid={ `${index}-${tags}-horizontal-tag` }
                   key={ `${indexx} ${objReceita.id}` }
 
-                />))}
+                >
+                  {tags}
+                </div>))}
+
               <img
                 className="details-image"
                 src={ objReceita.image }
@@ -58,7 +61,7 @@ function RecipesMade() {
               <p
                 data-testid={ `${index}-horizontal-top-text` }
               >
-                {objReceita.category}
+                {`${objReceita.area} - ${objReceita.category}`}
               </p>
               <p
                 data-testid={ `${index}-horizontal-name` }
@@ -73,6 +76,7 @@ function RecipesMade() {
               <button
                 type="button"
                 data-testid={ `${index}-horizontal-share-btn` }
+                src="../src/images/shareIcon.svg"
               >
                 compartilha
               </button>
