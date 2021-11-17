@@ -62,6 +62,7 @@ function RecipesMade() {
                 data-testid={ `${index}-horizontal-top-text` }
               >
                 {`${objReceita.area} - ${objReceita.category}`}
+                {objReceita.alcoholicOrNot}
               </p>
               <p
                 data-testid={ `${index}-horizontal-name` }
