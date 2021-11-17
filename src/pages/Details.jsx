@@ -5,6 +5,7 @@ import RecommendationCarousel from './RecommendationCarousel';
 import '../style/Details.css';
 import RecipeStatusButton from '../components/RecipeStatusButton';
 import ShareButton from '../components/ShareButton';
+import FavoriteButton from '../components/FavoriteButton';
 
 const recipeTypeToggle = (type, param1, param2) => (type === 'meals' ? param1 : param2);
 
@@ -67,12 +68,7 @@ function Details() {
         { key === 'Drink' && detailsData.strAlcoholic }
       </h4>
       <ShareButton testId="share-btn" route={ path } />
-      <button
-        type="button"
-        data-testid="favorite-btn"
-      >
-        Favorite
-      </button>
+      <FavoriteButton />
       <p
         data-testid="recipe-category"
         className="recipe-category"
