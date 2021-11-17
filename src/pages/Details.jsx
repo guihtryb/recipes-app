@@ -19,7 +19,6 @@ function Details() {
     const getRecipeDetails = async () => {
       const response = await requisition('lookup', 'i', id);
       const recipeDetails = response[type][0];
-      console.log(recipeDetails);
       setDetailsData(recipeDetails);
     };
     getRecipeDetails();
