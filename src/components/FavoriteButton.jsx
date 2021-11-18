@@ -9,13 +9,16 @@ function FavoriteButton({ id, type, area, category, alcoholicOrNot, name, image 
 
   useEffect(() => {
     const favRecipes = localStorage.getObj('favoriteRecipes');
-    if (!favRecipes) localStorage.setObj('doneRecipes', []);
-  }, []);
+    if (!favRecipes) localStorage.setObj('favoriteRecipes', []);
+    const favRecipe = favRecipes && favRecipes.some((recipe) => recipe.id === id);
+    console.log(favRecipe);
+    if (favRecipe) setFavorited(true);
+  }, [id]);
 
   const handleFavButton = () => {
     setFavorited(!favorited);
-    const favoriteRecipes = localStorage.getObj('doneRecipes');
-    localStorage.setObj('doneRecipes', [...favoriteRecipes, {
+    const favoriteRecipes = localStorage.getObj('favoriteRecipes');
+    localStorage.setObj('favoriteRecipes', [...favoriteRecipes, {
       id,
       type,
       area,
