@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
+import '../style/RecipeInProgress.css';
 
 const recipeTypeToggle = (type, param1, param2) => (type === 'meals' ? param1 : param2);
 
@@ -8,6 +9,7 @@ function RecipeInProgress() {
   const [detailsData, setDetailsData] = useState();
   const [ingredients, setIngredients] = useState();
   const [measures, setMeasures] = useState([]);
+  const [checkboxListener, setCheckboxListener] = useState([]);
 
   const location = useLocation();
   const path = location.pathname;
@@ -39,6 +41,19 @@ function RecipeInProgress() {
     getKeyValues('Measure', setMeasures);
   }, [type, requisition, id]);
 
+  const handleCheckbox = () => {
+    console.log('fui chamada');
+  };
+
+  // a função abaixo serve para o useEffect escutar a variavel
+  // checkboxListener e chamar a funcao handleCheckbox a cada
+  // alteração feita em algum checkbox
+  const handleCheckboxClick = () => {
+    setCheckboxListener([...checkboxListener, 1]);
+  };
+
+  useEffect(() => { handleCheckbox(); }, [checkboxListener]);
+
   if (!detailsData || !ingredients) return <h3> Loading...</h3>;
 
   return (
@@ -52,51 +67,44 @@ function RecipeInProgress() {
         height="205"
 
       />
-
       <h3
         className="recipe-title"
         data-testid="recipe-title"
       >
         {detailsData[`str${key}`]}
       </h3>
-
       <h4 data-testid="recipe-category">
         { key === 'Drink' && detailsData.strAlcoholic }
       </h4>
-
       <h4 data-testid="recipe-category" className="recipe-category">
-
         { detailsData.strCategory }
-
       </h4>
-
       <button type="button" data-testid="share-btn">
         Share
       </button>
-
       <button type="button" data-testid="favorite-btn">
         Favorite
       </button>
-
       { ingredients.map((ingredient, index) => (
         <p
           key={ ingredient }
           data-testid={ `${index}-ingredient-step` }
           className="details-ingredient"
         >
-          {`-${ingredient} - ${measures[index]}` }
+          <input
+            type="checkbox"
+            id={ `ingredient-${index}-checkbox` }
+            onClick={ handleCheckboxClick }
+            value={ ingredient }
+          />
+          {`${ingredient} - ${measures[index]}` }
         </p>)) }
-
       <p data-testid="instructions" className="instructions">
-
         { detailsData.strInstructions }
-
       </p>
-
       <button type="button" data-testid="finish-recipe-btn">
         Finish Recipe
       </button>
-
     </section>
   );
 }
