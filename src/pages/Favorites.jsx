@@ -1,4 +1,5 @@
 import React /* { useState } */from 'react';
+import { Link } from 'react-router-dom';
 import FavoriteButton from '../components/FavoriteButton';
 import Header from '../components/Header';
 import ShareButton from '../components/ShareButton';
@@ -37,39 +38,44 @@ function Favorites() {
       ))}
       { favoritedRecipes && favoritedRecipes.map((recipe, index) => (
         <div key={ recipe.name } className="favorite-container">
-          <img
-            className="details-image"
-            src={ recipe.image }
-            alt="recipe"
-            data-testid={ `${index}-horizontal-image` }
-            width="320"
-            height="200"
-          />
-          <i className="favorite-top-text" data-testid={ `${index}-horizontal-top-text` }>
-            { recipe.type === 'comida'
-              ? `${recipe.area} - ${recipe.category} ` : `${recipe.alcoholicOrNot} ` }
-          </i>
-          <span
-            className="favorite-title"
-            data-testid={ `${index}-horizontal-name` }
-          >
-            { recipe.name }
-          </span>
-          <FavoriteButton
-            id={ recipe.id }
-            type={ recipe.type }
-            area={ recipe.area }
-            category={ recipe.category }
-            alcoholicOrNot={ recipe.alcoholicOrNot }
-            name={ recipe.name }
-            image={ recipe.image }
-            testId={ `${index}-horizontal-favorite-btn` }
-          />
-          <ShareButton
-            testId={ `${index}-horizontal-share-btn` }
-            route={ recipe.type === 'comida'
-              ? `/comidas/${recipe.id}` : `bebidas/${recipe.id}` }
-          />
+          <Link to={ `${recipe.type}s/${recipe.id}` }>
+            <img
+              className="details-image"
+              src={ recipe.image }
+              alt="recipe"
+              data-testid={ `${index}-horizontal-image` }
+              width="320"
+              height="200"
+            />
+            <i
+              className="favorite-top-text"
+              data-testid={ `${index}-horizontal-top-text` }
+            >
+              { recipe.type === 'comida'
+                ? `${recipe.area} - ${recipe.category} ` : `${recipe.alcoholicOrNot} ` }
+            </i>
+            <span
+              className="favorite-title"
+              data-testid={ `${index}-horizontal-name` }
+            >
+              { recipe.name }
+            </span>
+            <FavoriteButton
+              id={ recipe.id }
+              type={ recipe.type }
+              area={ recipe.area }
+              category={ recipe.category }
+              alcoholicOrNot={ recipe.alcoholicOrNot }
+              name={ recipe.name }
+              image={ recipe.image }
+              testId={ `${index}-horizontal-favorite-btn` }
+            />
+            <ShareButton
+              testId={ `${index}-horizontal-share-btn` }
+              route={ recipe.type === 'comida'
+                ? `/comidas/${recipe.id}` : `bebidas/${recipe.id}` }
+            />
+          </Link>
         </div>
       )) }
     </>
