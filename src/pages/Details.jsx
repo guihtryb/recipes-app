@@ -68,7 +68,16 @@ function Details() {
         { key === 'Drink' && detailsData.strAlcoholic }
       </h4>
       <ShareButton testId="share-btn" route={ path } />
-      <FavoriteButton />
+      { console.log(detailsData) }
+      <FavoriteButton
+        id={ id }
+        type={ type === 'drinks' ? 'bebida' : 'comida' }
+        area={ type === 'drinks' ? '' : detailsData.strArea }
+        category={ detailsData.strCategory }
+        alcoholicOrNot={ type === 'meals' ? '' : detailsData.strAlcoholic }
+        name={ detailsData[`str${key}`] }
+        image={ detailsData[`str${key}Thumb`] }
+      />
       <p
         data-testid="recipe-category"
         className="recipe-category"
