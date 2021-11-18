@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+// import { copy } from 'clipboard-copy';
 import Header from '../components/Header';
+import '../utils/index';
 import ShareButton from '../components/ShareButton';
 
 function RecipesMade() {
-  const tavaNoLocalStored = JSON.parse(localStorage.getItem('doneRecipes'));
-  console.log(tavaNoLocalStored);
+  const [recipesToRender, setRecipesToRender] = useState([]);
+  const [filter, setFilter] = useState('all');
+
+  useEffect(() => {
+    const recipes = localStorage.getObj('doneRecipes');
+    if (filter === 'all') {
+      setRecipesToRender(recipes);
+    } else {
+      const filteredRecipes = recipes.filter((recipe) => recipe.type === filter);
+      setRecipesToRender(filteredRecipes);
+    }
+  }, [filter]);
+
   return (
     <>
       <Header title="Receitas Feitas" />
@@ -15,6 +28,7 @@ function RecipesMade() {
             name="all"
             id="allID"
             data-testid="filter-by-all-btn"
+            onClick={ () => setFilter('all') }
           >
             All
           </button>
@@ -23,6 +37,7 @@ function RecipesMade() {
             name="food"
             id="foodID"
             data-testid="filter-by-food-btn"
+            onClick={ () => setFilter('comida') }
           >
             Food
           </button>
@@ -31,13 +46,14 @@ function RecipesMade() {
             name="drinks"
             id="drinksID"
             data-testid="filter-by-drink-btn"
+            onClick={ () => setFilter('bebida') }
           >
             Drinks
           </button>
         </div>
         <div>
 
-          { tavaNoLocalStored.map((objReceita, index) => (
+          { recipesToRender.map((objReceita, index) => (
             <div
               key={ objReceita.id }
             >
