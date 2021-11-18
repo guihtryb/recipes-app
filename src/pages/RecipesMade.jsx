@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+// import { copy } from 'clipboard-copy';
 import Header from '../components/Header';
 import '../utils/index';
+
+const copy = require('clipboard-copy');
 
 function RecipesMade() {
   const [recipesToRender, setRecipesToRender] = useState([]);
@@ -8,17 +11,19 @@ function RecipesMade() {
 
   useEffect(() => {
     const recipes = localStorage.getObj('doneRecipes');
-    console.log(recipes);
     if (filter === 'all') {
       setRecipesToRender(recipes);
-    }
-    if (filter === 'comida') {
-      setRecipesToRender(recipes.filter((recipe) => recipe.type === 'comida'));
-    }
-    if (filter === 'bebida') {
-      setRecipesToRender(recipes.filter((recipe) => recipe.type === 'bebida'));
+    } else {
+      const filteredRecipes = recipes.filter((recipe) => recipe.type === filter);
+      setRecipesToRender(filteredRecipes);
     }
   }, [filter]);
+
+  const handleCopy = (recipe) => {
+    console.log(recipe);
+    copy(`http://localhost:3000/${recipe.type}s/${recipe.id}`);
+    document.getElementById(`${recipe.id}`).innerText = 'Link copiado!';
+  };
 
   return (
     <>
@@ -94,9 +99,11 @@ function RecipesMade() {
                 {objReceita.doneDate}
               </p>
               <button
+                id={ objReceita.id }
                 type="button"
                 data-testid={ `${index}-horizontal-share-btn` }
                 src="../src/images/shareIcon.svg"
+                onClick={ () => handleCopy(objReceita) }
               >
                 compartilha
               </button>
