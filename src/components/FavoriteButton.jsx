@@ -4,7 +4,15 @@ import whiteHeart from '../images/whiteHeartIcon.svg';
 import blackHeart from '../images/blackHeartIcon.svg';
 import '../utils/index';
 
-function FavoriteButton({ id, type, area, category, alcoholicOrNot, name, image }) {
+function FavoriteButton({ id,
+  type,
+  area,
+  category,
+  alcoholicOrNot,
+  name,
+  image,
+  testId = 'favorite-btn',
+}) {
   const [favorited, setFavorited] = useState(false);
 
   useEffect(() => {
@@ -32,7 +40,7 @@ function FavoriteButton({ id, type, area, category, alcoholicOrNot, name, image 
   return (
     <button
       type="button"
-      data-testid="favorite-btn"
+      data-testid={ testId }
       onClick={ handleFavButton }
       src={ favorited ? blackHeart : whiteHeart }
     >
@@ -49,6 +57,7 @@ FavoriteButton.propTypes = {
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  testId: PropTypes.string.isRequired,
 };
 
 export default FavoriteButton;
