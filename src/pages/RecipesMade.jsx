@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import { copy } from 'clipboard-copy';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import '../utils/index';
 import ShareButton from '../components/ShareButton';
@@ -65,27 +65,30 @@ function RecipesMade() {
                 >
                   {tags}
                 </div>))}
+              <Link to={ `/${objReceita.type}s/${objReceita.id}` }>
+                <img
+                  className="details-image"
+                  src={ objReceita.image }
+                  alt=""
+                  data-testid={ `${index}-horizontal-image` }
+                  swidth="320"
+                  height="205"
 
-              <img
-                className="details-image"
-                src={ objReceita.image }
-                alt=""
-                data-testid={ `${index}-horizontal-image` }
-                swidth="320"
-                height="205"
-
-              />
+                />
+              </Link>
               <p
                 data-testid={ `${index}-horizontal-top-text` }
               >
                 {`${objReceita.area} - ${objReceita.category}`}
                 {objReceita.alcoholicOrNot}
               </p>
-              <p
-                data-testid={ `${index}-horizontal-name` }
-              >
-                {objReceita.name}
-              </p>
+              <Link to={ `/${objReceita.type}s/${objReceita.id}` }>
+                <p
+                  data-testid={ `${index}-horizontal-name` }
+                >
+                  {objReceita.name}
+                </p>
+              </Link>
               <p
                 data-testid={ `${index}-horizontal-done-date` }
               >
