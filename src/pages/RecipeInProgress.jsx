@@ -94,7 +94,7 @@ function RecipeInProgress() {
       </p>
 
       <button type="button" data-testid="finish-recipe-btn">
-        FINALIZADÃO
+        Finish Recipe
       </button>
 
     </section>

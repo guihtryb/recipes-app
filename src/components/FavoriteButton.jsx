@@ -18,15 +18,21 @@ function FavoriteButton({ id, type, area, category, alcoholicOrNot, name, image 
   const handleFavButton = () => {
     setFavorited(!favorited);
     const favoriteRecipes = localStorage.getObj('favoriteRecipes');
-    localStorage.setObj('favoriteRecipes', [...favoriteRecipes, {
-      id,
-      type,
-      area,
-      category,
-      alcoholicOrNot,
-      name,
-      image,
-    }]);
+    if (favorited) {
+      const filteredFavoriteRecipes = favoriteRecipes
+        .filter((recipe) => recipe.id !== id);
+      localStorage.setObj('favoriteRecipes', [...filteredFavoriteRecipes]);
+    } else {
+      localStorage.setObj('favoriteRecipes', [...favoriteRecipes, {
+        id,
+        type,
+        area,
+        category,
+        alcoholicOrNot,
+        name,
+        image,
+      }]);
+    }
   };
 
   return (
