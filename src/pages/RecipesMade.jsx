@@ -10,6 +10,7 @@ function RecipesMade() {
 
   useEffect(() => {
     const recipes = localStorage.getObj('doneRecipes');
+    if (!recipes) localStorage.setObj('doneRecipes', []);
     if (filter === 'all') {
       setRecipesToRender(recipes);
     } else {
@@ -53,7 +54,7 @@ function RecipesMade() {
         </div>
         <div>
 
-          { recipesToRender.map((objReceita, index) => (
+          { (recipesToRender) && recipesToRender.map((objReceita, index) => (
             <div
               key={ objReceita.id }
             >
