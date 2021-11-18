@@ -20,7 +20,6 @@ function RecipesMade() {
   }, [filter]);
 
   const handleCopy = (recipe) => {
-    console.log(recipe);
     copy(`http://localhost:3000/${recipe.type}s/${recipe.id}`);
     document.getElementById(`${recipe.id}`).innerText = 'Link copiado!';
   };
