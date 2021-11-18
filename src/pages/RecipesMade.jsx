@@ -72,7 +72,7 @@ function RecipesMade() {
                   src={ objReceita.image }
                   alt=""
                   data-testid={ `${index}-horizontal-image` }
-                  swidth="320"
+                  width="320"
                   height="205"
 
                 />

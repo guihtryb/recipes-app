@@ -5,8 +5,8 @@ import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 const recipeTypeToggle = (type, param1, param2) => (type === 'meals' ? param1 : param2);
 
 function RecipeInProgress() {
-  const [detailsData, setDetailsData] = useState();
-  const [ingredients, setIngredients] = useState();
+  const [detailsData, setDetailsData] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
 
   const location = useLocation();

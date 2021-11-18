@@ -4,8 +4,6 @@ import { useHistory, useLocation } from 'react-router-dom';
 import '../utils/index';
 
 export default function RecipeStatusButton({ recipeId, type }) {
-  // resgatar id
-  // resgatar o localStorage, fazer um 'some'
   const [visibilityStatus, setVisibilityStatus] = useState('hidden');
   const [recipeStatus, setRecipeStatus] = useState('Iniciar Receita');
   const key = type === 'meals' ? 'meals' : 'cocktails';
