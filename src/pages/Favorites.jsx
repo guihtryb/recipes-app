@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import FavoriteButton from '../components/FavoriteButton';
 import Header from '../components/Header';
@@ -7,24 +7,31 @@ import Context from '../context/Context';
 // import PropTypes from 'prop-types';
 
 function Favorites() {
+  const [category, setCategory] = useState('All');
   const { favoritesData } = useContext(Context);
-  // console.log(favorites);
-  const favRecipes = localStorage.getObj('favoriteRecipes');
-  const favorites = !favoritesData.length
-    ? favRecipes : favoritesData;
+
+  const favRecipesLocalStorage = localStorage.getObj('favoriteRecipes');
+  const favoriteRecipes = !favoritesData.length
+    ? favRecipesLocalStorage : favoritesData;
+
+  const favorites = category === 'All'
+    ? favoriteRecipes : favoriteRecipes.filter((recipe) => recipe.type === category);
 
   const favoriteButtons = [
     {
       name: 'All',
       testId: 'filter-by-all-btn',
+      value: 'All',
     },
     {
       name: 'Food',
       testId: 'filter-by-food-btn',
+      value: 'comida',
     },
     {
       name: 'Drinks',
       testId: 'filter-by-drink-btn',
+      value: 'bebida',
     },
   ];
 
@@ -37,6 +44,8 @@ function Favorites() {
           key={ button.name }
           className="favorites-category-button"
           data-testid={ button.testId }
+          value={ button.value }
+          onClick={ () => setCategory(button.value) }
         >
           {button.name}
         </button>
