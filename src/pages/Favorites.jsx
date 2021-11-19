@@ -1,14 +1,18 @@
-import React /* { useState } */from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import FavoriteButton from '../components/FavoriteButton';
 import Header from '../components/Header';
 import ShareButton from '../components/ShareButton';
+import Context from '../context/Context';
 // import PropTypes from 'prop-types';
 
 function Favorites() {
-  // const [category, setCategory] = useState('All');
+  const { favoritesData } = useContext(Context);
+  // console.log(favorites);
+  const favRecipes = localStorage.getObj('favoriteRecipes');
+  const favorites = !favoritesData.length
+    ? favRecipes : favoritesData;
 
-  const favoritedRecipes = localStorage.getObj('favoriteRecipes');
   const favoriteButtons = [
     {
       name: 'All',
@@ -23,6 +27,7 @@ function Favorites() {
       testId: 'filter-by-drink-btn',
     },
   ];
+
   return (
     <>
       <Header title="Receitas Favoritas" />
@@ -36,7 +41,7 @@ function Favorites() {
           {button.name}
         </button>
       ))}
-      { favoritedRecipes && favoritedRecipes.map((recipe, index) => (
+      { favorites && favorites.map((recipe, index) => (
         <div key={ recipe.name } className="favorite-container">
           <Link to={ `${recipe.type}s/${recipe.id}` }>
             <img
@@ -60,22 +65,22 @@ function Favorites() {
             >
               { recipe.name }
             </span>
-            <FavoriteButton
-              id={ recipe.id }
-              type={ recipe.type }
-              area={ recipe.area }
-              category={ recipe.category }
-              alcoholicOrNot={ recipe.alcoholicOrNot }
-              name={ recipe.name }
-              image={ recipe.image }
-              testId={ `${index}-horizontal-favorite-btn` }
-            />
-            <ShareButton
-              testId={ `${index}-horizontal-share-btn` }
-              route={ recipe.type === 'comida'
-                ? `/comidas/${recipe.id}` : `bebidas/${recipe.id}` }
-            />
           </Link>
+          <FavoriteButton
+            id={ recipe.id }
+            type={ recipe.type }
+            area={ recipe.area }
+            category={ recipe.category }
+            alcoholicOrNot={ recipe.alcoholicOrNot }
+            name={ recipe.name }
+            image={ recipe.image }
+            testId={ `${index}-horizontal-favorite-btn` }
+          />
+          <ShareButton
+            testId={ `${index}-horizontal-share-btn` }
+            route={ recipe.type === 'comida'
+              ? `/comidas/${recipe.id}` : `bebidas/${recipe.id}` }
+          />
         </div>
       )) }
     </>
