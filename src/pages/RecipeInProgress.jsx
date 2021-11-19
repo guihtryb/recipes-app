@@ -6,8 +6,8 @@ import '../style/RecipeInProgress.css';
 const recipeTypeToggle = (type, param1, param2) => (type === 'meals' ? param1 : param2);
 
 function RecipeInProgress() {
-  const [detailsData, setDetailsData] = useState();
-  const [ingredients, setIngredients] = useState();
+  const [detailsData, setDetailsData] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
   const [checkboxListener, setCheckboxListener] = useState([]);
 
