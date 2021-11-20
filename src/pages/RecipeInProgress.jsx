@@ -3,6 +3,8 @@ import { useLocation } from 'react-router';
 import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 import IngredientsCheckbox from '../components/IngredientsCheckbox';
 import Context from '../context/Context';
+import ShareButton from '../components/ShareButton';
+import FavoriteButton from '../components/FavoriteButton';
 import '../style/RecipeInProgress.css';
 
 const handleStateAndStorage = ({
@@ -122,12 +124,19 @@ function RecipeInProgress() {
       <h4 data-testid="recipe-category" className="recipe-category">
         { detailsData.strCategory }
       </h4>
-      <button type="button" data-testid="share-btn">
-        Share
-      </button>
-      <button type="button" data-testid="favorite-btn">
-        Favorite
-      </button>
+      <ShareButton
+        testId="share-btn"
+        route={ path.split('/in-progress')[0] }
+      />
+      <FavoriteButton
+        id={ id }
+        type={ type === 'drinks' ? 'bebida' : 'comida' }
+        area={ type === 'drinks' ? '' : detailsData.strArea }
+        category={ detailsData.strCategory }
+        alcoholicOrNot={ type === 'meals' ? '' : detailsData.strAlcoholic }
+        name={ detailsData[`str${key}`] }
+        image={ detailsData[`str${key}Thumb`] }
+      />
       { ingredients.map((ingredient, index) => (
         <p
           key={ ingredient }
