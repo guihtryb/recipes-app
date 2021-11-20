@@ -5,6 +5,46 @@ import IngredientsCheckbox from '../components/IngredientsCheckbox';
 import Context from '../context/Context';
 import '../style/RecipeInProgress.css';
 
+const handleStateAndStorage = ({
+  inProgressRecipes,
+  setUsedIngredients,
+  usedIngredients,
+  type,
+  id,
+}) => {
+  if (!inProgressRecipes) {
+    localStorage.setObj('inProgressRecipes', {
+      cocktails: {},
+      meals: {},
+    });
+    setUsedIngredients({
+      cocktails: {},
+      meals: {},
+    });
+  } else {
+    const recipeType = type === 'meals' ? 'meals' : 'cocktails';
+    const inProgressRecipesKeys = Object.keys(inProgressRecipes[recipeType])
+      .includes(id);
+
+    if (!inProgressRecipesKeys) {
+      localStorage.setObj('inProgressRecipes', {
+        ...inProgressRecipes,
+        [recipeType]: {
+          ...inProgressRecipes[recipeType],
+          [id]: [],
+        },
+      });
+      setUsedIngredients({
+        ...usedIngredients,
+        [recipeType]: {
+          ...usedIngredients[recipeType],
+          [id]: [],
+        },
+      });
+    }
+  }
+};
+
 const recipeTypeToggle = (type, param1, param2) => (type === 'meals' ? param1 : param2);
 
 function RecipeInProgress() {
@@ -47,38 +87,14 @@ function RecipeInProgress() {
 
   useEffect(() => {
     const inProgressRecipes = localStorage.getObj('inProgressRecipes');
-
-    if (!inProgressRecipes) {
-      localStorage.setObj('inProgressRecipes', {
-        cocktails: {},
-        meals: {},
-      });
-      setUsedIngredients({
-        cocktails: {},
-        meals: {},
-      });
-    } else {
-      const recipeType = type === 'meals' ? 'meals' : 'cocktails';
-      const inProgressRecipesKeys = Object.keys(inProgressRecipes[recipeType])
-        .includes(id);
-
-      if (!inProgressRecipesKeys) {
-        localStorage.setObj('inProgressRecipes', {
-          ...inProgressRecipes,
-          [recipeType]: {
-            ...inProgressRecipes[recipeType],
-            [id]: [],
-          },
-        });
-        setUsedIngredients({
-          ...usedIngredients,
-          [recipeType]: {
-            ...usedIngredients[recipeType],
-            [id]: [],
-          },
-        });
-      }
-    }
+    const paramObj = {
+      inProgressRecipes,
+      setUsedIngredients,
+      usedIngredients,
+      type,
+      id,
+    };
+    handleStateAndStorage(paramObj);
   }, [id, type, setUsedIngredients, usedIngredients]);
 
   if (!detailsData || !ingredients) return <h3> Loading...</h3>;
