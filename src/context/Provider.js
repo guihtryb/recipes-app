@@ -7,7 +7,11 @@ function Provider({ children }) {
   const [searchData, setSearchData] = useState([]);
   const [foodData, setFoodData] = useState([]);
   const [drinkLists, setDrinkLists] = useState([]);
+<<<<<<< HEAD
   const [usedIngredients, setUsedIngredients] = useState([]);
+=======
+  const [favoritesData, setFavoritesData] = useState([]);
+>>>>>>> 262878fa4cdbe99f96195dab8e2111c4febb9548
 
   useEffect(() => {
     const loadFoodData = async () => {
@@ -30,8 +34,13 @@ function Provider({ children }) {
     drinkLists,
     searchData,
     setSearchData,
+<<<<<<< HEAD
     usedIngredients,
     setUsedIngredients,
+=======
+    favoritesData,
+    setFavoritesData,
+>>>>>>> 262878fa4cdbe99f96195dab8e2111c4febb9548
   };
 
   return (

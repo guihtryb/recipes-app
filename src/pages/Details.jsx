@@ -68,7 +68,6 @@ function Details() {
         { key === 'Drink' && detailsData.strAlcoholic }
       </h4>
       <ShareButton testId="share-btn" route={ path } />
-      { console.log(detailsData) }
       <FavoriteButton
         id={ id }
         type={ type === 'drinks' ? 'bebida' : 'comida' }

@@ -7,24 +7,29 @@ import Context from '../context/Context';
 function CategoryButton(props) {
   const { category } = props;
   const { setSearchData } = useContext(Context);
-  const [currentCategory, setCurrentCategory] = useState('');
-
+  const [currentCategory, setCurrentCategory] = useState({
+    [category.strCategory]: true,
+  });
+    // [category].map((item) => console.log(Object.values(item)));
   // https://stackoverflow.com/questions/42253277/react-router-v4-how-to-get-current-route
   const location = useLocation();
-
   const handleClick = async ({ target: { value } }) => {
+    // console.log(currentCategory[value]);
     // se o MESMO botão para selecionar a categoria for clicado 2x seguidas, searchData é limpo
-
-    if (currentCategory === value) {
-      setSearchData([]);
-    } else {
-      const filteredByCategoryRecipes = location.pathname === '/comidas'
-        ? await fetchFoodReq('filter', 'c', value)
-        : await fetchDrinkReq('filter', 'c', value);
-
-      setSearchData(filteredByCategoryRecipes);
-      setCurrentCategory(value);
+    if (currentCategory[value] === false) {
+      setCurrentCategory({
+        [value]: !currentCategory[value],
+      });
+      return setSearchData([]);
     }
+    const filteredByCategoryRecipes = location.pathname === '/comidas'
+      ? await fetchFoodReq('filter', 'c', value)
+      : await fetchDrinkReq('filter', 'c', value);
+
+    setSearchData(filteredByCategoryRecipes);
+    setCurrentCategory({
+      [value]: !currentCategory[value],
+    });
   };
 
   return (
