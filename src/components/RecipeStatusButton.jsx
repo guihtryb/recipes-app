@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import '../utils/index';
+import Context from '../context/Context';
 
 export default function RecipeStatusButton({ recipeId, type }) {
   const [visibilityStatus, setVisibilityStatus] = useState('hidden');
@@ -9,6 +10,7 @@ export default function RecipeStatusButton({ recipeId, type }) {
   const key = type === 'meals' ? 'meals' : 'cocktails';
   const history = useHistory();
   const { pathname } = useLocation();
+  const { setUsedIngredients } = useContext(Context);
 
   useEffect(() => {
     const doneRecipes = localStorage.getObj('doneRecipes');
@@ -19,8 +21,12 @@ export default function RecipeStatusButton({ recipeId, type }) {
         cocktails: {},
         meals: {},
       });
+      setUsedIngredients({
+        cocktails: {},
+        meals: {},
+      });
     }
-  }, []);
+  }, [setUsedIngredients]);
   useEffect(() => {
     const compareId = () => {
       const doneRecipes = localStorage.getObj('doneRecipes');

@@ -7,6 +7,7 @@ function Provider({ children }) {
   const [searchData, setSearchData] = useState([]);
   const [foodData, setFoodData] = useState([]);
   const [drinkLists, setDrinkLists] = useState([]);
+  const [usedIngredients, setUsedIngredients] = useState([]);
 
   useEffect(() => {
     const loadFoodData = async () => {
@@ -29,6 +30,8 @@ function Provider({ children }) {
     drinkLists,
     searchData,
     setSearchData,
+    usedIngredients,
+    setUsedIngredients,
   };
 
   return (
