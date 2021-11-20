@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import whiteHeart from '../images/whiteHeartIcon.svg';
 import blackHeart from '../images/blackHeartIcon.svg';
 import '../utils/index';
+import Context from '../context/Context';
 
 function FavoriteButton({ id,
   type,
@@ -14,12 +15,12 @@ function FavoriteButton({ id,
   testId = 'favorite-btn',
 }) {
   const [favorited, setFavorited] = useState(false);
+  const { favoritesData, setFavoritesData } = useContext(Context);
 
   useEffect(() => {
     const favRecipes = localStorage.getObj('favoriteRecipes');
     if (!favRecipes) localStorage.setObj('favoriteRecipes', []);
     const favRecipe = favRecipes && favRecipes.some((recipe) => recipe.id === id);
-    console.log(favRecipe);
     if (favRecipe) setFavorited(true);
   }, [id]);
 
@@ -30,6 +31,8 @@ function FavoriteButton({ id,
       const filteredFavoriteRecipes = favoriteRecipes
         .filter((recipe) => recipe.id !== id);
       localStorage.setObj('favoriteRecipes', [...filteredFavoriteRecipes]);
+      const filteredFavoriteData = favoritesData.filter((item) => item.id !== id);
+      setFavoritesData([...filteredFavoriteData]);
     } else {
       localStorage.setObj('favoriteRecipes', [...favoriteRecipes, {
         id,
@@ -40,6 +43,17 @@ function FavoriteButton({ id,
         name,
         image,
       }]);
+      setFavoritesData([
+        ...favoritesData,
+        {
+          id,
+          type,
+          area,
+          category,
+          alcoholicOrNot,
+          name,
+          image,
+        }]);
     }
   };
 
