@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useLocation } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
 import IngredientsCheckbox from '../components/IngredientsCheckbox';
 import Context from '../context/Context';
@@ -62,6 +63,8 @@ function RecipeInProgress() {
   const type = path.includes('comidas') ? 'meals' : 'drinks';
   const requisition = recipeTypeToggle(type, fetchFoodReq, fetchDrinkReq);
   const key = recipeTypeToggle(type, 'Meal', 'Drink');
+  const recipeType = type === 'meals' ? 'meals' : 'cocktails';
+  const history = useHistory();
 
   useEffect(() => {
     const getRecipeDetails = async () => {
@@ -154,7 +157,13 @@ function RecipeInProgress() {
       <p data-testid="instructions" className="instructions">
         { detailsData.strInstructions }
       </p>
-      <button type="button" data-testid="finish-recipe-btn">
+      <button
+        type="button"
+        data-testid="finish-recipe-btn"
+        disabled={ (usedIngredients[recipeType] && usedIngredients[recipeType][id])
+          && usedIngredients[recipeType][id].length !== ingredients.length }
+        onClick={ () => history.push('/receitas-feitas') }
+      >
         Finish Recipe
       </button>
     </section>

@@ -19,7 +19,6 @@ function FavoriteButton({ id,
     const favRecipes = localStorage.getObj('favoriteRecipes');
     if (!favRecipes) localStorage.setObj('favoriteRecipes', []);
     const favRecipe = favRecipes && favRecipes.some((recipe) => recipe.id === id);
-    console.log(favRecipe);
     if (favRecipe) setFavorited(true);
   }, [id]);
 
