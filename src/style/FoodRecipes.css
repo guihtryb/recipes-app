@@ -34,5 +34,12 @@
 }
 
 .categories-container button:hover {
-  background-color: #e26a2c;
+  background-color: #ff7b00;
+}
+
+
+.recipes-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }

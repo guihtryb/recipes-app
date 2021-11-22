@@ -13,11 +13,15 @@ function RecipeCard({ thumb, name, recipeIndex, recipeId, recipeRecommendation }
     ? `${recipeIndex}-recomendation-card` : `${recipeIndex}-recipe-card`;
   const recipeHeader = recipeRecommendation
     ? `${recipeIndex}-recomendation-title` : `${recipeIndex}-card-name`;
+  let title = name;
 
+  // if (name) {
+  //   title = title.length > 15 ? `${title.substring(0, 15)}  ...` : title;
+  // }
   return (
     <Link to={ `/${recipeRecommendation ? rotaRecomendation : rota}/${recipeId}` }>
       <div data-testid={ dataTestId } className="recipe-card">
-        <h2 data-testid={ recipeHeader } className="recipe-title">{ name }</h2>
+        <h2 data-testid={ recipeHeader } className="recipe-title">{ title }</h2>
         <img
           src={ thumb }
           alt={ `imagem do alimento ${name}` }
