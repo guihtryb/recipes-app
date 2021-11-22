@@ -13,9 +13,9 @@ function ExploreFood() {
     history.push(`/comidas/${randomId}`);
   };
   return (
-    <div>
+    <div className="explore-wrapper">
       <Header title="Explorar Comidas" />
-      <div>
+      <div className="categories-container">
         <LinkButton
           text="Por Ingredientes"
           testid="explore-by-ingredient"
