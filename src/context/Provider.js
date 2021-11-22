@@ -7,6 +7,7 @@ function Provider({ children }) {
   const [searchData, setSearchData] = useState([]);
   const [foodData, setFoodData] = useState([]);
   const [drinkLists, setDrinkLists] = useState([]);
+  const [usedIngredients, setUsedIngredients] = useState([]);
   const [favoritesData, setFavoritesData] = useState([]);
 
   useEffect(() => {
@@ -30,6 +31,8 @@ function Provider({ children }) {
     drinkLists,
     searchData,
     setSearchData,
+    usedIngredients,
+    setUsedIngredients,
     favoritesData,
     setFavoritesData,
   };

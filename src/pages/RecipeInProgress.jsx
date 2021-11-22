@@ -1,15 +1,61 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useLocation } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { fetchDrinkReq, fetchFoodReq } from '../services/APIs';
+import IngredientsCheckbox from '../components/IngredientsCheckbox';
+import Context from '../context/Context';
+import ShareButton from '../components/ShareButton';
+import FavoriteButton from '../components/FavoriteButton';
 import '../style/RecipeInProgress.css';
+
+const handleStateAndStorage = ({
+  inProgressRecipes,
+  setUsedIngredients,
+  usedIngredients,
+  type,
+  id,
+}) => {
+  if (!inProgressRecipes) {
+    localStorage.setObj('inProgressRecipes', {
+      cocktails: {},
+      meals: {},
+    });
+    setUsedIngredients({
+      cocktails: {},
+      meals: {},
+    });
+  } else {
+    const recipeType = type === 'meals' ? 'meals' : 'cocktails';
+    const inProgressRecipesKeys = Object.keys(inProgressRecipes[recipeType])
+      .includes(id);
+
+    if (!inProgressRecipesKeys) {
+      localStorage.setObj('inProgressRecipes', {
+        ...inProgressRecipes,
+        [recipeType]: {
+          ...inProgressRecipes[recipeType],
+          [id]: [],
+        },
+      });
+      setUsedIngredients({
+        ...usedIngredients,
+        [recipeType]: {
+          ...usedIngredients[recipeType],
+          [id]: [],
+        },
+      });
+    }
+  }
+};
 
 const recipeTypeToggle = (type, param1, param2) => (type === 'meals' ? param1 : param2);
 
 function RecipeInProgress() {
+  const { usedIngredients,
+    setUsedIngredients } = useContext(Context);
   const [detailsData, setDetailsData] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
-  const [checkboxListener, setCheckboxListener] = useState([]);
 
   const location = useLocation();
   const path = location.pathname;
@@ -17,6 +63,9 @@ function RecipeInProgress() {
   const type = path.includes('comidas') ? 'meals' : 'drinks';
   const requisition = recipeTypeToggle(type, fetchFoodReq, fetchDrinkReq);
   const key = recipeTypeToggle(type, 'Meal', 'Drink');
+  const recipeType = type === 'meals' ? 'meals' : 'cocktails';
+  const history = useHistory();
+
   useEffect(() => {
     const getRecipeDetails = async () => {
       const response = await requisition('lookup', 'i', id);
@@ -41,18 +90,17 @@ function RecipeInProgress() {
     getKeyValues('Measure', setMeasures);
   }, [type, requisition, id]);
 
-  const handleCheckbox = () => {
-    console.log('fui chamada');
-  };
-
-  // a função abaixo serve para o useEffect escutar a variavel
-  // checkboxListener e chamar a funcao handleCheckbox a cada
-  // alteração feita em algum checkbox
-  const handleCheckboxClick = () => {
-    setCheckboxListener([...checkboxListener, 1]);
-  };
-
-  useEffect(() => { handleCheckbox(); }, [checkboxListener]);
+  useEffect(() => {
+    const inProgressRecipes = localStorage.getObj('inProgressRecipes');
+    const paramObj = {
+      inProgressRecipes,
+      setUsedIngredients,
+      usedIngredients,
+      type,
+      id,
+    };
+    handleStateAndStorage(paramObj);
+  }, [id, type, setUsedIngredients, usedIngredients]);
 
   if (!detailsData || !ingredients) return <h3> Loading...</h3>;
 
@@ -79,30 +127,43 @@ function RecipeInProgress() {
       <h4 data-testid="recipe-category" className="recipe-category">
         { detailsData.strCategory }
       </h4>
-      <button type="button" data-testid="share-btn">
-        Share
-      </button>
-      <button type="button" data-testid="favorite-btn">
-        Favorite
-      </button>
+      <ShareButton
+        testId="share-btn"
+        route={ path.split('/in-progress')[0] }
+      />
+      <FavoriteButton
+        id={ id }
+        type={ type === 'drinks' ? 'bebida' : 'comida' }
+        area={ type === 'drinks' ? '' : detailsData.strArea }
+        category={ detailsData.strCategory }
+        alcoholicOrNot={ type === 'meals' ? '' : detailsData.strAlcoholic }
+        name={ detailsData[`str${key}`] }
+        image={ detailsData[`str${key}Thumb`] }
+      />
       { ingredients.map((ingredient, index) => (
         <p
           key={ ingredient }
           data-testid={ `${index}-ingredient-step` }
           className="details-ingredient"
         >
-          <input
-            type="checkbox"
-            id={ `ingredient-${index}-checkbox` }
-            onClick={ handleCheckboxClick }
-            value={ ingredient }
+          <IngredientsCheckbox
+            type={ type }
+            id={ id }
+            index={ index }
+            ingredient={ ingredient }
           />
           {`${ingredient} - ${measures[index]}` }
         </p>)) }
       <p data-testid="instructions" className="instructions">
         { detailsData.strInstructions }
       </p>
-      <button type="button" data-testid="finish-recipe-btn">
+      <button
+        type="button"
+        data-testid="finish-recipe-btn"
+        disabled={ (usedIngredients[recipeType] && usedIngredients[recipeType][id])
+          && usedIngredients[recipeType][id].length !== ingredients.length }
+        onClick={ () => history.push('/receitas-feitas') }
+      >
         Finish Recipe
       </button>
     </section>
