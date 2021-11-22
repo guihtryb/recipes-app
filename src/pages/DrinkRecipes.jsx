@@ -5,6 +5,7 @@ import RecipeCard from '../components/RecipeCard';
 import FilterByCategoryButton from '../components/FilterByCategoryButton';
 import FilterByAllButton from '../components/FilterByAllButton';
 import Context from '../context/Context';
+// import '../style/FoodRecipes.css';
 // import PropTypes from 'prop-types';
 
 function DrinkRecipes() {
@@ -17,15 +18,17 @@ function DrinkRecipes() {
     && drinkLists[0].items.drinks.slice(0, lastRenderedCategoryIndex);
   const receitasCategoriasBebidas = searchData.drinks
     && searchData.drinks.slice(0, lastRenderedDrinkIndex);
-  const receitasSearchBebidas = searchData.length
+  const receitasSearchBebidas = searchData.length > 0
     && searchData.slice(0, lastRenderedDrinkIndex);
   return (
-    <div>
+    <div className="food-recipes-container">
       <Header title="Bebidas" />
-      { categoriasBebidas && categoriasBebidas.map((category) => (
-        <FilterByCategoryButton category={ category } key={ category.strCategory } />
-      )) }
-      <FilterByAllButton />
+      <div className="categories-container">
+        { categoriasBebidas && categoriasBebidas.map((category) => (
+          <FilterByCategoryButton category={ category } key={ category.strCategory } />
+        )) }
+        <FilterByAllButton />
+      </div>
       {searchData.length === 0
         && (receitasBebidas && receitasBebidas.map((bebida, index) => (
           <RecipeCard
