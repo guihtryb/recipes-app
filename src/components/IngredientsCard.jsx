@@ -49,7 +49,7 @@ export default function IngredientsCard({ type, mainRote }) {
             data-testid={ `${index}-ingredient-card` }
           >
             <img
-              src={ `${imgUrl}${ingredient}-Small.png` }
+              src={ `${imgUrl}${ingredient}.png` }
               alt="Ingredient"
               className="ingredient-card recipe-image "
               data-testid={ `${index}-card-img` }
