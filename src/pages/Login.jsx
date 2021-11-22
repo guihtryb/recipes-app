@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import name from '../images/name.png';
 import '../utils/index';
+import '../style/Login.css';
 
 function Login(props) {
   const [email, setEmail] = useState('');
@@ -40,33 +42,37 @@ function Login(props) {
 
   const MIN_PASSWORD_CHARACTERS = 6;
   return (
-    <div data-testid="login-page">
-      <input
-        type="email"
-        name="email-input"
-        id="email-input"
-        data-testid="email-input"
-        onChange={ handleChange }
-        value={ email }
-      />
-      <input
-        type="password"
-        name="password-input"
-        id="password-input"
-        data-testid="password-input"
-        onChange={ handleChange }
-        value={ password }
-      />
-      <button
-        type="button"
-        value="Entrar"
-        data-testid="login-submit-btn"
-        disabled={ !(password.length > MIN_PASSWORD_CHARACTERS
+    <div data-testid="login-page" className="login-page">
+      <img src={ name } alt="Nomad' Recipes" />
+      <div className="login-container">
+        <input
+          type="email"
+          name="email-input"
+          id="email-input"
+          data-testid="email-input"
+          onChange={ handleChange }
+          value={ email }
+        />
+        <input
+          type="password"
+          name="password-input"
+          id="password-input"
+          data-testid="password-input"
+          onChange={ handleChange }
+          value={ password }
+        />
+        <button
+          type="button"
+          value="Entrar"
+          data-testid="login-submit-btn"
+          className="login-button"
+          disabled={ !(password.length > MIN_PASSWORD_CHARACTERS
           && validateEmail) }
-        onClick={ handleClick }
-      >
-        Entrar
-      </button>
+          onClick={ handleClick }
+        >
+          Entrar
+        </button>
+      </div>
     </div>
   );
 }

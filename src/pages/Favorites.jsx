@@ -4,7 +4,6 @@ import FavoriteButton from '../components/FavoriteButton';
 import Header from '../components/Header';
 import ShareButton from '../components/ShareButton';
 import Context from '../context/Context';
-// import PropTypes from 'prop-types';
 
 function Favorites() {
   const [category, setCategory] = useState('All');
