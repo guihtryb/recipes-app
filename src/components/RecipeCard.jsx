@@ -16,8 +16,8 @@ function RecipeCard({ thumb, name, recipeIndex, recipeId, recipeRecommendation }
 
   return (
     <Link to={ `/${recipeRecommendation ? rotaRecomendation : rota}/${recipeId}` }>
-      <div data-testid={ dataTestId }>
-        <h2 data-testid={ recipeHeader }>{ name }</h2>
+      <div data-testid={ dataTestId } className="recipe-card">
+        <h2 data-testid={ recipeHeader } className="recipe-title">{ name }</h2>
         <img
           src={ thumb }
           alt={ `imagem do alimento ${name}` }

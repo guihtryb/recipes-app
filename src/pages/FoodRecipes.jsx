@@ -5,7 +5,8 @@ import RecipeCard from '../components/RecipeCard';
 import FilterByCategoryButton from '../components/FilterByCategoryButton';
 import Context from '../context/Context';
 import FilterByAllButton from '../components/FilterByAllButton';
-// import PropTypes from 'prop-types';
+import cooking from '../images/cooking.gif';
+import '../style/FoodRecipes.css';
 
 function FoodRecipes() {
   const { foodData, searchData } = useContext(Context);
@@ -20,13 +21,22 @@ function FoodRecipes() {
   const receitasSearchComidas = searchData.length
     && searchData.slice(0, lastRenderedMealIndex);
 
+  if (!foodData.length) {
+    return (
+      <div className="loading-container">
+        <img className="loading-gif" alt="loading gif" src={ cooking } />
+      </div>);
+  }
+
   return (
-    <div>
+    <div className="food-recipes-container">
       <Header title="Comidas" />
-      { categoriasComidas && categoriasComidas.map((category) => (
-        <FilterByCategoryButton category={ category } key={ category.strCategory } />
-      )) }
-      <FilterByAllButton />
+      <div className="categories-container">
+        { categoriasComidas && categoriasComidas.map((category) => (
+          <FilterByCategoryButton category={ category } key={ category.strCategory } />
+        )) }
+        <FilterByAllButton />
+      </div>
       {searchData.length === 0
         && (receitasComidas && receitasComidas.map((meal, index) => (
           <RecipeCard

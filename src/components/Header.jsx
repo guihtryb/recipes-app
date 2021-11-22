@@ -22,7 +22,7 @@ export default function Header({ title }) {
   if (redirect) return <Redirect to="/perfil" />;
 
   return (
-    <header className="header-container">
+    <header className={ !searchBar ? 'header-container' : 'header-container-expanded' }>
       <button
         type="button"
         onClick={ () => setRedirect(true) }
@@ -34,14 +34,12 @@ export default function Header({ title }) {
           data-testid="profile-top-btn"
         />
       </button>
-
       <p
         data-testid="page-title"
         className="page-title"
       >
         {title}
       </p>
-
       {!isExploring
         && (
           <button
@@ -51,14 +49,12 @@ export default function Header({ title }) {
           >
             <img src={ searchIcon } alt="Buscar" data-testid="search-top-btn" />
           </button>)}
-
       {
         searchBar && (
           <SearchBar
             title={ title }
           />)
       }
-
     </header>
   );
 }

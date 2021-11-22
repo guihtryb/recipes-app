@@ -48,12 +48,14 @@ export default function SearchBar({ title }) {
     <form>
       <input
         type="text"
+        className="search-input"
         onChange={ (e) => searchRecipes(e, checkValue) }
         value={ searchText }
         data-testid="search-input"
       />
       <div
         onChange={ (e) => setCheckValue(e.target.value) }
+        className="filter-options"
       >
         <label htmlFor="ingredientID">
           <input
@@ -91,6 +93,7 @@ export default function SearchBar({ title }) {
         </label>
       </div>
       <button
+        className="search-button"
         type="button"
         data-testid="exec-search-btn"
         onClick={ () => handleSearch(type, checkValue, searchText) }
