@@ -6,7 +6,7 @@ import IngredientsCard from '../components/IngredientsCard';
 
 function ExploreDrinkIngredientes() {
   return (
-    <div>
+    <div className="explore-wrapper">
       <Header title="Explorar Ingredientes" />
       <IngredientsCard type="drinks" mainRote="bebidas" />
       <Footer />

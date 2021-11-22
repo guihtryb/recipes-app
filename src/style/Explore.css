@@ -1,0 +1,20 @@
+ body {
+   background-color: #eee9e5;
+ }
+ 
+ .explore-wrapper {
+  align-items: center;
+  background-color: #eee9e5;
+  background-size: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+ }
+
+.explore-btn-container {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: Sanchez , serif;
+  justify-content: center;
+  margin-bottom: 20px;
+}

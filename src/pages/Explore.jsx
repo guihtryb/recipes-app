@@ -2,12 +2,13 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import LinkButton from '../components/LinkButton';
+import '../style/Explore.css';
 
 function Explore() {
   return (
-    <div>
+    <div className="explore-wrapper">
       <Header title="Explorar" />
-      <div>
+      <div className="categories-container">
         <LinkButton
           text="Explorar Comidas"
           linkTo="/explorar/comidas"

@@ -14,9 +14,9 @@ function ExploreDrink() {
   };
 
   return (
-    <div>
+    <div className="explore-wrapper">
       <Header title="Explorar Bebidas" />
-      <div>
+      <div className="categories-container">
         <LinkButton
           text="Por Ingredientes"
           testid="explore-by-ingredient"

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import searchIcon from '../images/searchIcon.svg';
@@ -7,10 +8,22 @@ import SearchBar from './SearchBar';
 import '../utils/index';
 import '../style/Header.css';
 
+const classNameHandler = (path, searchBar) => {
+  if (path.includes('/explorar') && !path.includes('area')) {
+    return 'header-explore';
+  }
+  if (!searchBar) {
+    return 'header-container';
+  }
+  return 'header-container-expanded';
+};
+
 export default function Header({ title }) {
   const [redirect, setRedirect] = useState(false);
   const [searchBar, setSearchBar] = useState(false);
   const [isExploring, setIsExploring] = useState(false);
+  const location = useLocation();
+  const path = location.pathname;
 
   useEffect(() => {
     if (title.includes('Explorar')) setIsExploring(true);
@@ -22,7 +35,7 @@ export default function Header({ title }) {
   if (redirect) return <Redirect to="/perfil" />;
 
   return (
-    <header className={ !searchBar ? 'header-container' : 'header-container-expanded' }>
+    <header className={ classNameHandler(path, searchBar) }>
       <button
         type="button"
         onClick={ () => setRedirect(true) }

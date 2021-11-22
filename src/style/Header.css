@@ -29,6 +29,15 @@ button:hover {
   width: 100%;
 }
 
+.header-explore {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
 .page-title {
   font-family: Sanchez , serif;
   font-size: 20px;

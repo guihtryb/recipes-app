@@ -21,7 +21,7 @@ function ExploreFoodArea() {
 
   if (!area) return <img className="loading-gif" src="https://media0.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif?cid=ecf05e4739n2hlkxm6a8ymnheguv7bxk3f5m6wag9ocwigzy&rid=giphy.gif&ct=g" alt="" />;
   return (
-    <div>
+    <div className="explore-wrapper">
       <Header title="Explorar Origem" />
       <select
         className="area-dropdown"
