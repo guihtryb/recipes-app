@@ -22,7 +22,10 @@
     "react-scripts": "3.4.1",
     "websocket-extensions": ">=0.1.4"
   },
+  "homepage": "https://guihtryb.github.io/recipes-app",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "cy": "cypress run",
     "cy:open": "cypress open",
     "start": "react-scripts start",

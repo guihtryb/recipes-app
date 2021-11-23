@@ -15,7 +15,7 @@ export default function Footer() {
   return (
     <footer data-testid="footer" className="footer-menu">
       <Link
-        to="/bebidas"
+        to="/recipes-app/bebidas"
         data-testid="drinks-bottom-btn"
         src={ drinkIcon }
         onClick={ clearSearchData }
@@ -23,7 +23,7 @@ export default function Footer() {
         <img src={ drinkIcon } alt="drink-icon" />
       </Link>
       <Link
-        to="/explorar"
+        to="/recipes-app/explorar"
         data-testid="explore-bottom-btn"
         src={ exploreIcon }
         onClick={ clearSearchData }
@@ -31,7 +31,7 @@ export default function Footer() {
         <img src={ exploreIcon } alt="drink-icon" />
       </Link>
       <Link
-        to="/comidas"
+        to="/recipes-app/comidas"
         data-testid="food-bottom-btn"
         src={ mealIcon }
         onClick={ clearSearchData }

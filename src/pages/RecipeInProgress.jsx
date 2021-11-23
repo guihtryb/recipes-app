@@ -59,13 +59,12 @@ function RecipeInProgress() {
 
   const location = useLocation();
   const path = location.pathname;
-  const id = path.split('/')[2];
+  const id = path.split('/')[3];
   const type = path.includes('comidas') ? 'meals' : 'drinks';
   const requisition = recipeTypeToggle(type, fetchFoodReq, fetchDrinkReq);
   const key = recipeTypeToggle(type, 'Meal', 'Drink');
   const recipeType = type === 'meals' ? 'meals' : 'cocktails';
   const history = useHistory();
-
   useEffect(() => {
     const getRecipeDetails = async () => {
       const response = await requisition('lookup', 'i', id);
@@ -162,7 +161,7 @@ function RecipeInProgress() {
         data-testid="finish-recipe-btn"
         disabled={ (usedIngredients[recipeType] && usedIngredients[recipeType][id])
           && usedIngredients[recipeType][id].length !== ingredients.length }
-        onClick={ () => history.push('/receitas-feitas') }
+        onClick={ () => history.push('/recipes-app/receitas-feitas') }
       >
         Finish Recipe
       </button>

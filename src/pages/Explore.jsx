@@ -11,13 +11,13 @@ function Explore() {
       <div className="categories-container">
         <LinkButton
           text="Explorar Comidas"
-          linkTo="/explorar/comidas"
+          linkTo="/recipes-app/explorar/comidas"
           testid="explore-food"
         />
 
         <LinkButton
           text="Explorar Bebidas"
-          linkTo="/explorar/bebidas"
+          linkTo="/recipes-app/explorar/bebidas"
           testid="explore-drinks"
         />
       </div>

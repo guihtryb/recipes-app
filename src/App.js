@@ -23,50 +23,50 @@ function App() {
   return (
     <Provider>
       <Switch>
-        <Route exact path="/comidas" component={ FoodRecipes } />
-        <Route exact path="/bebidas" component={ DrinkRecipes } />
-        <Route exact path="/explorar" component={ Explore } />
-        <Route exact path="/perfil" component={ Perfil } />
-        <Route exact path="/receitas-feitas" component={ RecipesMade } />
-        <Route exact path="/receitas-favoritas" component={ Favorites } />
-        <Route exact path="/explorar/comidas" component={ ExploreFood } />
-        <Route exact path="/explorar/bebidas" component={ ExploreDrink } />
+        <Route exact path="/recipes-app/comidas" component={ FoodRecipes } />
+        <Route exact path="/recipes-app/bebidas" component={ DrinkRecipes } />
+        <Route exact path="/recipes-app/explorar" component={ Explore } />
+        <Route exact path="/recipes-app/perfil" component={ Perfil } />
+        <Route exact path="/recipes-app/receitas-feitas" component={ RecipesMade } />
+        <Route exact path="/recipes-app/receitas-favoritas" component={ Favorites } />
+        <Route exact path="/recipes-app/explorar/comidas" component={ ExploreFood } />
+        <Route exact path="/recipes-app/explorar/bebidas" component={ ExploreDrink } />
         <Route
           exact
-          path="/explorar/comidas/ingredientes"
+          path="/recipes-app/explorar/comidas/ingredientes"
           component={ ExploreFoodIngredientes }
         />
         <Route
           exact
-          path="/explorar/comidas/area"
+          path="/recipes-app/explorar/comidas/area"
           component={ ExploreFoodArea }
         />
         <Route
           exact
-          path="/explorar/bebidas/ingredientes"
+          path="/recipes-app/explorar/bebidas/ingredientes"
           component={ ExploreDrinkIngredientes }
         />
         <Route
           exact
-          path="/comidas/:id"
+          path="/recipes-app/comidas/:id"
           render={ (props) => <Details { ...props } /> }
         />
         <Route
           exact
-          path="/bebidas/:id"
+          path="/recipes-app/bebidas/:id"
           render={ (props) => <Details { ...props } /> }
         />
         <Route
           exact
-          path="/comidas/:id/in-progress"
+          path="/recipes-app/comidas/:id/in-progress"
           render={ (props) => <RecipeInProgress { ...props } /> }
         />
         <Route
           exact
-          path="/bebidas/:id/in-progress"
+          path="/recipes-app/bebidas/:id/in-progress"
           render={ (props) => <RecipeInProgress { ...props } /> }
         />
-        <Route exact path="/" component={ Login } />
+        <Route exact path="/recipes-app" component={ Login } />
         <Route component={ NotFound } />
       </Switch>
     </Provider>

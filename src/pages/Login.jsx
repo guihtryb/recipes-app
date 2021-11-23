@@ -37,7 +37,7 @@ function Login(props) {
       email,
     };
     localStorage.user = JSON.stringify(user);
-    history.push('./comidas');
+    history.push('./recipes-app/comidas');
   };
 
   const MIN_PASSWORD_CHARACTERS = 6;

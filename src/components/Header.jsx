@@ -32,7 +32,7 @@ export default function Header({ title }) {
     if (title.includes('Origem')) setIsExploring(false);
   }, [title]);
 
-  if (redirect) return <Redirect to="/perfil" />;
+  if (redirect) return <Redirect to="/recipes-app/perfil" />;
 
   return (
     <header className={ classNameHandler(path, searchBar) }>

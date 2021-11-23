@@ -20,7 +20,7 @@ function ExploreDrink() {
         <LinkButton
           text="Por Ingredientes"
           testid="explore-by-ingredient"
-          linkTo="/explorar/bebidas/ingredientes"
+          linkTo="/recipes-app/explorar/bebidas/ingredientes"
         />
 
         <button

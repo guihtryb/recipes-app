@@ -11,7 +11,7 @@ function Perfil() {
     <div>
       <Header title="Perfil" />
       <h2 data-testid="profile-email">{ userEmail }</h2>
-      <Link to="/receitas-feitas">
+      <Link to="/recipes-app/receitas-feitas">
         <button
           type="button"
           data-testid="profile-done-btn"
@@ -19,7 +19,7 @@ function Perfil() {
           Receitas Feitas
         </button>
       </Link>
-      <Link to="/receitas-favoritas">
+      <Link to="/recipes-app/receitas-favoritas">
         <button
           type="button"
           data-testid="profile-favorite-btn"
@@ -27,7 +27,7 @@ function Perfil() {
           Receitas Favoritas
         </button>
       </Link>
-      <Link to="/">
+      <Link to="/recipes-app/">
         <button
           type="button"
           data-testid="profile-logout-btn"

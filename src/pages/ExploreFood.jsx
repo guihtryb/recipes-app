@@ -10,7 +10,7 @@ function ExploreFood() {
   const history = useHistory();
   const randomRecipe = async () => {
     const randomId = (await fetchRandomRecipe('comidas')).meals[0].idMeal;
-    history.push(`/comidas/${randomId}`);
+    history.push(`/recipes-app/comidas/${randomId}`);
   };
   return (
     <div className="explore-wrapper">
@@ -19,12 +19,12 @@ function ExploreFood() {
         <LinkButton
           text="Por Ingredientes"
           testid="explore-by-ingredient"
-          linkTo="/explorar/comidas/ingredientes"
+          linkTo="/recipes-app/explorar/comidas/ingredientes"
         />
         <LinkButton
           text="Por Local de Origem"
           testid="explore-by-area"
-          linkTo="/explorar/comidas/area"
+          linkTo="/recipes-app/explorar/comidas/area"
         />
         <button
           type="button"
