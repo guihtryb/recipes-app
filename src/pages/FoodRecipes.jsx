@@ -18,7 +18,7 @@ function FoodRecipes() {
     && foodData[0].items.meals.slice(0, lastRenderedCategoryIndex);
   const receitasCategoriasComidas = searchData.meals
     && searchData.meals.slice(0, lastRenderedMealIndex);
-  const receitasSearchComidas = searchData.length
+  const receitasSearchComidas = searchData.length > 0
     && searchData.slice(0, lastRenderedMealIndex);
 
   if (!foodData.length) {
