@@ -40,7 +40,7 @@ export default function IngredientsCard({ type, mainRote }) {
     <section className="ingredients-container">
       { ingredients.map((ingredient, index) => index < maxLength && (
         <Link
-          to={ `/${mainRote}` }
+          to={ `/recipes-app/${mainRote}` }
           onClick={ () => redirectCorrectly(ingredient) }
         >
           <div

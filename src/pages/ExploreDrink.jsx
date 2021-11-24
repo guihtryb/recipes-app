@@ -10,7 +10,7 @@ function ExploreDrink() {
   const history = useHistory();
   const randomRecipe = async () => {
     const randomId = (await fetchRandomRecipe('bebidas')).drinks[0].idDrink;
-    history.push(`/bebidas/${randomId}`);
+    history.push(`/recipes-app/bebidas/${randomId}`);
   };
 
   return (

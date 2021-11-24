@@ -21,7 +21,12 @@ iframe {
 }
 
 .details-recipe-title {
+  border-bottom: 2px solid #e26a2c;
+  font-family: Sanchez , serif;
   font-size: 7vw;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  width: fit-content;
 }
 
 .details-alcoholic {
@@ -60,6 +65,7 @@ iframe {
 .details-image {
   align-self: center;
   border-radius: 20px;
+  height: 35vh;
   margin: 20px;
-  width: 85vw;
+  width: 80vw;
 }

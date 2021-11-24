@@ -60,7 +60,7 @@ function Details() {
           width="300"
         />
         <h3
-          className="recipe-title"
+          className="details-recipe-title"
           data-testid="recipe-title"
         >
           {detailsData[`str${key}`]}

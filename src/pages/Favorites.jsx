@@ -35,20 +35,22 @@ function Favorites() {
   ];
 
   return (
-    <>
+    <section className="explore-food-section">
       <Header title="Receitas Favoritas" />
-      { favoriteButtons.map((button) => (
-        <button
-          type="button"
-          key={ button.name }
-          className="favorites-category-button"
-          data-testid={ button.testId }
-          value={ button.value }
-          onClick={ () => setCategory(button.value) }
-        >
-          {button.name}
-        </button>
-      ))}
+      <div className="categories-container">
+        { favoriteButtons.map((button) => (
+          <button
+            type="button"
+            key={ button.name }
+            className="favorites-category-button"
+            data-testid={ button.testId }
+            value={ button.value }
+            onClick={ () => setCategory(button.value) }
+          >
+            {button.name}
+          </button>
+        ))}
+      </div>
       { favorites && favorites.map((recipe, index) => (
         <div key={ recipe.name } className="favorite-container">
           <Link to={ `${recipe.type}s/${recipe.id}` }>
@@ -91,7 +93,7 @@ function Favorites() {
           />
         </div>
       )) }
-    </>
+    </section>
   );
 }
 

@@ -116,12 +116,12 @@ function RecipeInProgress() {
 
         />
         <h3
-          className="recipe-title"
+          className="details-recipe-title"
           data-testid="recipe-title"
         >
           {detailsData[`str${key}`]}
         </h3>
-        <h4 data-testid="recipe-category">
+        <h4 data-testid="recipe-category" className="in-progress-category">
           { key === 'Drink' && detailsData.strAlcoholic }
         </h4>
         <h4 data-testid="recipe-category" className="in-progress-category">

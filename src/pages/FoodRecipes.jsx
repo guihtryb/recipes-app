@@ -21,7 +21,7 @@ function FoodRecipes() {
     && searchData.meals.slice(0, lastRenderedMealIndex);
   const receitasSearchComidas = searchData.length > 0
     && searchData.slice(0, lastRenderedMealIndex);
-  const loadingSimulateTime = 6000;
+  const loadingSimulateTime = 2000;
 
   useEffect(() => {
     const loadingSimulate = () => {
