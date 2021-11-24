@@ -9,6 +9,7 @@ iframe {
   color: white;
   display: flex;
   flex-direction: column;
+  height: fit-content;
 }
 
 .details-infos {
@@ -17,7 +18,6 @@ iframe {
   flex-direction: column;
   font-family: Sanchez , serif;
   font-size: 4.5vw;
-  width: 100vw;
 }
 
 .details-recipe-title {
