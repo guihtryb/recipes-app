@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2fcad9194a2a775c0da7fc81d9c50eb2",
+    "revision": "cf76a17a40809d6ddd1915eb55780242",
     "url": "/recipes-app/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/recipes-app/static/css/2.a0998e03.chunk.css"
   },
   {
-    "revision": "1699ac7165c1a0db3943",
+    "revision": "b32008b8ce1487f072ae",
     "url": "/recipes-app/static/css/main.a1c50e19.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/recipes-app/static/js/2.c631934a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1699ac7165c1a0db3943",
-    "url": "/recipes-app/static/js/main.ef1ee352.chunk.js"
+    "revision": "b32008b8ce1487f072ae",
+    "url": "/recipes-app/static/js/main.42c0f93d.chunk.js"
   },
   {
     "revision": "25993f9b630f63b44851",
