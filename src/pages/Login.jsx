@@ -8,7 +8,6 @@ function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [validateEmail, setValidateEmail] = useState(false);
-
   // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
   const emailValidation = (userEmail) => {
     const re = /\S+@\S+\.\S+/;
@@ -41,6 +40,7 @@ function Login(props) {
   };
 
   const MIN_PASSWORD_CHARACTERS = 6;
+
   return (
     <div data-testid="login-page" className="login-page">
       <img src={ name } alt="Nomad' Recipes" />

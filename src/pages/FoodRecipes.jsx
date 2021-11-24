@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipeCard from '../components/RecipeCard';
@@ -9,6 +9,7 @@ import cooking from '../images/cookingTest.gif';
 import '../style/FoodRecipes.css';
 
 function FoodRecipes() {
+  const [loaded, setLoaded] = useState(false);
   const { foodData, searchData } = useContext(Context);
   const lastRenderedMealIndex = 12;
   const lastRenderedCategoryIndex = 5;
@@ -20,12 +21,21 @@ function FoodRecipes() {
     && searchData.meals.slice(0, lastRenderedMealIndex);
   const receitasSearchComidas = searchData.length > 0
     && searchData.slice(0, lastRenderedMealIndex);
+  const loadingSimulateTime = 6000;
 
-  if (!foodData.length) {
+  useEffect(() => {
+    const loadingSimulate = () => {
+      setTimeout(() => setLoaded(true), loadingSimulateTime);
+    };
+    loadingSimulate();
+  }, [loaded]);
+
+  if (!loaded || !foodData.length) {
     return (
       <div className="loading-container">
         <img className="loading-gif" alt="loading gif" src={ cooking } />
-      </div>);
+      </div>
+    );
   }
 
   return (
