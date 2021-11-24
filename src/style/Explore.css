@@ -1,15 +1,16 @@
- body {
-   background-color: #eee9e5;
- }
- 
- .explore-wrapper {
+.explore-section, .explore-food-section, .explore-ingredients-section {
+  background: linear-gradient(to top, #e26a2c, #27282d,
+  #27282d, #27282d, #27282d, #27282d, #27282d, #27282d, #27282d, #27282d);
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.explore-wrapper {
   align-items: center;
-  background-color: #eee9e5;
-  background-size: 100vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
- }
+}
 
 .explore-btn-container {
   display: flex;

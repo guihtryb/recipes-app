@@ -9,7 +9,7 @@ function ShareButton({ testId, route }) {
   const handleShareButton = () => {
     const THREE_SECONDS = 3000;
     copy(`http://localhost:3000${route}`);
-    setIsSharing('Link copiado!');
+    setIsSharing(' Link copiado!');
     setTimeout(() => setIsSharing(''), THREE_SECONDS);
   };
 

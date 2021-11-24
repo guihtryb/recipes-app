@@ -21,25 +21,26 @@ function ExploreFoodArea() {
 
   if (!area) return <img className="loading-gif" src="https://media0.giphy.com/media/3o7bu8sRnYpTOG1p8k/giphy.gif?cid=ecf05e4739n2hlkxm6a8ymnheguv7bxk3f5m6wag9ocwigzy&rid=giphy.gif&ct=g" alt="" />;
   return (
-    <div className="explore-wrapper">
-      <Header title="Explorar Origem" />
-      <select
-        className="area-dropdown"
-        data-testid="explore-by-area-dropdown"
-        onChange={ ({ target }) => searchArea(target.value) }
-      >
-        <option data-testid="All-option" value="All">All</option>
-        { area.map((item) => (
-          <option
-            data-testid={ `${item.strArea}-option` }
-            key={ item.strArea }
-            value={ item.strArea }
-          >
-            { `${item.strArea}` }
-          </option>
+    <section className="explore-section">
+      <div className="explore-wrapper">
+        <Header title="Explorar Origem" />
+        <select
+          className="area-dropdown"
+          data-testid="explore-by-area-dropdown"
+          onChange={ ({ target }) => searchArea(target.value) }
+        >
+          <option data-testid="All-option" value="All">All</option>
+          { area.map((item) => (
+            <option
+              data-testid={ `${item.strArea}-option` }
+              key={ item.strArea }
+              value={ item.strArea }
+            >
+              { `${item.strArea}` }
+            </option>
         )) }
-      </select>
-      {!searchData.meals ? foodRecipes
+        </select>
+        {!searchData.meals ? foodRecipes
         .map((meal, index) => index < maxLength
           && (
             <RecipeCard
@@ -58,8 +59,9 @@ function ExploreFoodArea() {
           recipeId={ data.idMeal }
         />
       ))}
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </section>
   );
 }
 

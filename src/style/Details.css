@@ -1,10 +1,65 @@
+iframe {
+  align-self: center;
+  width: 90vw;
+}
+
+.details-container {
+  background: linear-gradient(to top, #e26a2c, #27282d,
+  #27282d, #27282d, #27282d, #27282d, #27282d, #27282d, #27282d, #27282d);
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.details-infos {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: Sanchez , serif;
+  font-size: 4.5vw;
+  width: 100vw;
+}
+
+.recipe-title {
+  font-size: 7vw;
+}
+
+.details-alcoholic {
+  font-family: Sanchez , serif;
+  font-size: 5vw;
+  text-align: center;
+}
+
+.recipe-category {
+  border-bottom: 12px dotted white;
+  padding: 3px 0;
+  margin-bottom: 25px;
+}
+
+.in-progress-category {
+  font-family: Sanchez , serif;
+  font-size: 5.5vw;
+  text-align: center;
+}
+
+.instructions {
+  width: 90vw;
+}
+
+
 .details-start-recipe {
+  align-self: center;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   bottom: 0;
+  margin: 0;
   position: fixed;
+  width: 100vw;
 }
 
 .details-image {
+  align-self: center;
   border-radius: 20px;
   margin: 20px;
-  width: 350px;
+  width: 85vw;
 }

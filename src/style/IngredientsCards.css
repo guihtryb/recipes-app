@@ -3,3 +3,8 @@
   margin: auto;
   width: 365px;
 }
+
+.ingredient-card {
+  display: flex;
+  flex-direction: column;
+}

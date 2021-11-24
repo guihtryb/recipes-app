@@ -22,7 +22,7 @@ function CategoryButton(props) {
       });
       return setSearchData([]);
     }
-    const filteredByCategoryRecipes = location.pathname === '/comidas'
+    const filteredByCategoryRecipes = location.pathname === '/recipes-app/comidas'
       ? await fetchFoodReq('filter', 'c', value)
       : await fetchDrinkReq('filter', 'c', value);
 

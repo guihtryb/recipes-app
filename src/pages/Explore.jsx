@@ -6,23 +6,28 @@ import '../style/Explore.css';
 
 function Explore() {
   return (
-    <div className="explore-wrapper">
-      <Header title="Explorar" />
-      <div className="categories-container">
-        <LinkButton
-          text="Explorar Comidas"
-          linkTo="/recipes-app/explorar/comidas"
-          testid="explore-food"
-        />
+    <section className="explore-section">
+      <div className="explore-container">
+        <div className="explore-wrapper">
+          <Header title="Explorar" />
+          <div className="categories-container">
+            <LinkButton
+              text="Explorar Comidas"
+              linkTo="/recipes-app/explorar/comidas"
+              testid="explore-food"
+            />
 
-        <LinkButton
-          text="Explorar Bebidas"
-          linkTo="/recipes-app/explorar/bebidas"
-          testid="explore-drinks"
-        />
+            <LinkButton
+              text="Explorar Bebidas"
+              linkTo="/recipes-app/explorar/bebidas"
+              testid="explore-drinks"
+            />
+          </div>
+          <Footer />
+        </div>
       </div>
-      <Footer />
-    </div>
+    </section>
+
   );
 }
 

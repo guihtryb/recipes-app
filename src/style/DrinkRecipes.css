@@ -1,0 +1,16 @@
+.drinks-recipes-section {
+  background: linear-gradient(to top, #e26a2c, #27282d,
+  #27282d, #27282d, #27282d, #27282d, #27282d, #27282d, #27282d, #27282d);
+}
+
+.drinks-recipes-container {
+  align-items: center;
+  background-image: url('../images/background.png');
+  background-repeat: no-repeat;
+  background-size: 75vh;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  justify-content: center;
+  overflow-y: auto;
+}

@@ -44,20 +44,20 @@ export default function IngredientsCard({ type, mainRote }) {
           onClick={ () => redirectCorrectly(ingredient) }
         >
           <div
-            className="ingredient-card recipe-card "
+            className="recipe-card "
             key={ ingredient }
             data-testid={ `${index}-ingredient-card` }
           >
-            <img
-              src={ `${imgUrl}${ingredient}.png` }
-              alt="Ingredient"
-              className="ingredient-card recipe-image "
-              data-testid={ `${index}-card-img` }
-            />
             <span
               className="ingredient-name recipe-title"
               data-testid={ `${index}-card-name` }
             >
+              <img
+                src={ `${imgUrl}${ingredient}.png` }
+                alt="Ingredient"
+                className="ingredient-card recipe-image "
+                data-testid={ `${index}-card-img` }
+              />
               {ingredient}
             </span>
           </div>

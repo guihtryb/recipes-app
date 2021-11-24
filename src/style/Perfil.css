@@ -1,0 +1,17 @@
+.perfil-section {
+  background: linear-gradient(to top, #e26a2c, #27282d,
+  #27282d, #27282d, #27282d, #27282d, #27282d, #27282d, #27282d, #27282d);
+  color: white;
+  height: 100vh;
+}
+
+.perfil-container {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+}
+
+.user-email {
+  font-size: 6.5vw;
+}

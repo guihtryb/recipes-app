@@ -5,7 +5,7 @@ import RecipeCard from '../components/RecipeCard';
 import FilterByCategoryButton from '../components/FilterByCategoryButton';
 import FilterByAllButton from '../components/FilterByAllButton';
 import Context from '../context/Context';
-// import '../style/FoodRecipes.css';
+import '../style/DrinkRecipes.css';
 // import PropTypes from 'prop-types';
 
 function DrinkRecipes() {
@@ -21,15 +21,17 @@ function DrinkRecipes() {
   const receitasSearchBebidas = searchData.length > 0
     && searchData.slice(0, lastRenderedDrinkIndex);
   return (
-    <div className="food-recipes-container">
-      <Header title="Bebidas" />
-      <div className="categories-container">
-        { categoriasBebidas && categoriasBebidas.map((category) => (
-          <FilterByCategoryButton category={ category } key={ category.strCategory } />
-        )) }
-        <FilterByAllButton />
-      </div>
-      {searchData.length === 0
+    <section className="drinks-recipes-section">
+      <div className="drinks-recipes-container">
+        <Header title="Bebidas" />
+        <div className="categories-container">
+          { categoriasBebidas && categoriasBebidas.map((category) => (
+            <FilterByCategoryButton category={ category } key={ category.strCategory } />
+          )) }
+          <FilterByAllButton />
+        </div>
+        <div className="recipes-container">
+          {searchData.length === 0
         && (receitasBebidas && receitasBebidas.map((bebida, index) => (
           <RecipeCard
             key={ bebida.idDrink }
@@ -39,25 +41,28 @@ function DrinkRecipes() {
             recipeId={ bebida.idDrink }
           />
         ))) }
-      {searchData.drinks ? receitasCategoriasBebidas.map((drink, index) => (
-        <RecipeCard
-          key={ drink.idDrink }
-          name={ drink.strDrink }
-          thumb={ drink.strDrinkThumb }
-          recipeIndex={ index }
-          recipeId={ drink.idDrink }
-        />
-      )) : receitasSearchBebidas && receitasSearchBebidas.map((data, index) => (
-        index < lastRenderedDrinkIndex && <RecipeCard
-          key={ data.idDrink }
-          name={ data.strDrink }
-          thumb={ data.strDrinkThumb }
-          recipeIndex={ index }
-          recipeId={ data.idDrink }
-        />
-      ))}
-      <Footer />
-    </div>
+          {searchData.drinks ? receitasCategoriasBebidas.map((drink, index) => (
+            <RecipeCard
+              key={ drink.idDrink }
+              name={ drink.strDrink }
+              thumb={ drink.strDrinkThumb }
+              recipeIndex={ index }
+              recipeId={ drink.idDrink }
+            />
+          )) : receitasSearchBebidas && receitasSearchBebidas.map((data, index) => (
+            index < lastRenderedDrinkIndex && <RecipeCard
+              key={ data.idDrink }
+              name={ data.strDrink }
+              thumb={ data.strDrinkThumb }
+              recipeIndex={ index }
+              recipeId={ data.idDrink }
+            />
+          ))}
+        </div>
+        <Footer />
+      </div>
+    </section>
+
   );
 }
 

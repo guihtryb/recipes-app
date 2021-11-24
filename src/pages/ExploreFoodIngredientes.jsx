@@ -6,11 +6,13 @@ import IngredientsCard from '../components/IngredientsCard';
 
 function ExploreFoodIngredientes() {
   return (
-    <div className="explore-wrapper">
-      <Header title="Explorar Ingredientes" />
-      <IngredientsCard type="meals" mainRote="comidas" />
-      <Footer />
-    </div>
+    <section className="explore-ingredients-section">
+      <div className="explore-wrapper">
+        <Header title="Explorar Ingredientes" />
+        <IngredientsCard type="meals" mainRote="comidas" />
+        <Footer />
+      </div>
+    </section>
   );
 }
 

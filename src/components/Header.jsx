@@ -9,7 +9,8 @@ import '../utils/index';
 import '../style/Header.css';
 
 const classNameHandler = (path, searchBar) => {
-  if (path.includes('/explorar') && !path.includes('area')) {
+  if ((path.includes('/perfil') || path.includes('/explorar')
+  || path.includes('/receitas')) && !path.includes('area')) {
     return 'header-explore';
   }
   if (!searchBar) {

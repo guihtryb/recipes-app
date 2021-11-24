@@ -14,26 +14,28 @@ function ExploreDrink() {
   };
 
   return (
-    <div className="explore-wrapper">
-      <Header title="Explorar Bebidas" />
-      <div className="categories-container">
-        <LinkButton
-          text="Por Ingredientes"
-          testid="explore-by-ingredient"
-          linkTo="/recipes-app/explorar/bebidas/ingredientes"
-        />
+    <section className="explore-section">
+      <div className="explore-wrapper">
+        <Header title="Explorar Bebidas" />
+        <div className="categories-container">
+          <LinkButton
+            text="Por Ingredientes"
+            testid="explore-by-ingredient"
+            linkTo="/recipes-app/explorar/bebidas/ingredientes"
+          />
 
-        <button
-          type="button"
-          data-testid="explore-surprise"
-          onClick={ randomRecipe }
-        >
-          Me Surpreenda!
-        </button>
+          <button
+            type="button"
+            data-testid="explore-surprise"
+            onClick={ randomRecipe }
+          >
+            Me Surpreenda!
+          </button>
 
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </section>
   );
 }
 
