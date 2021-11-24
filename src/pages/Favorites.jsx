@@ -9,11 +9,12 @@ function Favorites() {
   const [category, setCategory] = useState('All');
   const { favoritesData } = useContext(Context);
 
-  const favRecipesLocalStorage = localStorage.getObj('favoriteRecipes');
+  const favRecipesLocalStorage = localStorage.getObj('favoriteRecipes')
+    ? localStorage.getObj('favoriteRecipes') : [];
   const favoriteRecipes = !favoritesData.length
     ? favRecipesLocalStorage : favoritesData;
 
-  const favorites = category === 'All'
+  const favorites = favoriteRecipes.length && category === 'All'
     ? favoriteRecipes : favoriteRecipes.filter((recipe) => recipe.type === category);
 
   const favoriteButtons = [
