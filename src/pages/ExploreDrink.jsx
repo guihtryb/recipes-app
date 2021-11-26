@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import LinkButton from '../components/LinkButton';
 import { fetchRandomRecipe } from '../services/APIs';
-// import PropTypes from 'prop-types';
 
 function ExploreDrink() {
   const history = useHistory();

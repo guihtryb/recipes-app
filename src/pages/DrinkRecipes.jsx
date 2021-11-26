@@ -6,7 +6,6 @@ import FilterByCategoryButton from '../components/FilterByCategoryButton';
 import FilterByAllButton from '../components/FilterByAllButton';
 import Context from '../context/Context';
 import '../style/DrinkRecipes.css';
-// import PropTypes from 'prop-types';
 
 function DrinkRecipes() {
   const { drinkLists, searchData } = useContext(Context);
@@ -23,12 +22,17 @@ function DrinkRecipes() {
   return (
     <section className="drinks-recipes-section">
       <div className="drinks-recipes-container">
-        <Header title="Bebidas" />
-        <div className="categories-container">
-          { categoriasBebidas && categoriasBebidas.map((category) => (
-            <FilterByCategoryButton category={ category } key={ category.strCategory } />
-          )) }
-          <FilterByAllButton />
+        <div className="header-and-categories-container">
+          <Header title="Bebidas" />
+          <div className="categories-container">
+            { categoriasBebidas && categoriasBebidas.map((category) => (
+              <FilterByCategoryButton
+                category={ category }
+                key={ category.strCategory }
+              />
+            )) }
+            <FilterByAllButton />
+          </div>
         </div>
         <div className="recipes-container">
           {searchData.length === 0

@@ -53,21 +53,21 @@ function RecipesMade() {
       </div>
 
       <div>
-        { (recipesToRender) && recipesToRender.map((objReceita, index) => (
+        { recipesToRender && recipesToRender.map((recipe, index) => (
           <div
-            key={ objReceita.id }
+            key={ recipe.id }
           >
-            {objReceita.tags.map((tags, indexx) => (
+            {recipe.tags.map((tags, indexx) => (
               <div
                 data-testid={ `${index}-${tags}-horizontal-tag` }
-                key={ `${indexx} ${objReceita.id}` }
+                key={ `${indexx} ${recipe.id}` }
               >
                 {tags}
               </div>))}
-            <Link to={ `/${objReceita.type}s/${objReceita.id}` }>
+            <Link to={ `/${recipe.type}s/${recipe.id}` }>
               <img
                 className="details-image"
-                src={ objReceita.image }
+                src={ recipe.image }
                 alt=""
                 data-testid={ `${index}-horizontal-image` }
                 width="320"
@@ -77,29 +77,27 @@ function RecipesMade() {
             <p
               data-testid={ `${index}-horizontal-top-text` }
             >
-              {`${objReceita.area} - ${objReceita.category}`}
-              {objReceita.alcoholicOrNot}
+              {`${recipe.area} - ${recipe.category}`}
+              {recipe.alcoholicOrNot}
             </p>
-            <Link to={ `/${objReceita.type}s/${objReceita.id}` }>
+            <Link to={ `/${recipe.type}s/${recipe.id}` }>
               <p
                 data-testid={ `${index}-horizontal-name` }
               >
-                {objReceita.name}
+                {recipe.name}
               </p>
             </Link>
             <p
               data-testid={ `${index}-horizontal-done-date` }
             >
-              {objReceita.doneDate}
+              {recipe.doneDate}
             </p>
             <ShareButton
               testId={ `${index}-horizontal-share-btn` }
-              route={ `/${objReceita.type}s/${objReceita.id}` }
+              route={ `/${recipe.type}s/${recipe.id}` }
             />
 
           </div>))}
-
-        Gerador de card das receitas feitas
       </div>
     </section>
   );

@@ -17,7 +17,7 @@
 }
 
 .food-recipes-container {
-  align-items: center;
+  align-items: flex-start;
   background-image: url('../images/background.png');
   background-repeat: no-repeat;
   background-size: 75vh;

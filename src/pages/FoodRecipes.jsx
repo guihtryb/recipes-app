@@ -41,12 +41,17 @@ function FoodRecipes() {
   return (
     <section className="food-recipes-section">
       <div className="food-recipes-container">
-        <Header title="Comidas" />
-        <div className="categories-container">
-          { categoriasComidas && categoriasComidas.map((category) => (
-            <FilterByCategoryButton category={ category } key={ category.strCategory } />
-          )) }
-          <FilterByAllButton />
+        <div className="header-and-categories-container">
+          <Header title="Comidas" />
+          <div className="categories-container">
+            { categoriasComidas && categoriasComidas.map((category) => (
+              <FilterByCategoryButton
+                category={ category }
+                key={ category.strCategory }
+              />
+            )) }
+            <FilterByAllButton />
+          </div>
         </div>
         <div className="recipes-container">
           {searchData.length === 0
