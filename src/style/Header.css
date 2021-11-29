@@ -34,7 +34,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-bottom: 25px;
   width: 100%;
 }
 

@@ -1,0 +1,112 @@
+.recipe-made-card {
+  align-items: center;
+  background: linear-gradient(to top left, #ff7b00, #fda65d);
+  border-radius: 10px;
+  box-shadow: 1px 1px 16px black;
+  cursor: pointer;
+  display: flex;
+  flex-flow: row wrap;
+  font-family: Sanchez , serif;
+  font-size: 18px;
+  justify-content: center;
+  margin: 3.2vh 7vw;
+  transition: all ease 0.4s;
+}
+
+.recipe-made-card a {
+  color: black;
+}
+
+.recipe-made-card:hover {
+  background: linear-gradient(to top left, #fda65d, #ff7b00, #ff7b00);
+  box-shadow: 8px 15px 20px rgba(0, 0, 0, 0.4);
+  transform: translateY(-20px);
+}
+
+.recipe-made-tags-and-image {
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: 600;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+
+.recipe-made-image {
+  border-radius: 12px;
+  box-shadow: 5px 5px 20px black;
+  width: 250px;
+}
+
+
+.recipe-made-infos {
+  align-items: center;
+  color: black;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  width: 95vw;
+}
+
+@media screen and ( min-width : 445px ) and ( max-width : 700px ) {
+
+  .recipe-made-card {
+    justify-content: space-between;
+  }
+
+  .recipe-made-image {
+    margin: 0 25px;
+  }
+
+  .recipe-made-tags-and-image {
+    align-items: center;
+    flex-direction: row-reverse;
+    margin: 10px 0;
+  }
+
+  .recipe-made-infos {
+    width: 82vw;
+  }
+
+  .recipes-made-buttons {
+    display: flex;
+    justify-content: center;
+    width: 82vw;
+  }
+}
+
+@media screen and ( min-width : 700px ) {
+
+  .recipe-made-card {
+    margin: 5vh auto;
+    width: 90vw;
+  }
+
+  .recipe-made-tags-and-image {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    height: 41vh;
+    margin: 0;
+    margin-left: 16px;
+    width: fit-content;
+  }
+
+  .recipe-made-image {
+    margin: 0;
+    margin-right: 10px;
+  }
+
+  .recipe-made-infos-container {
+    display: flex;
+    width: 89vw;
+  }
+
+  .recipe-made-infos {
+    align-self: center;
+    flex-direction: row;
+    height: fit-content;
+  }
+
+}
+

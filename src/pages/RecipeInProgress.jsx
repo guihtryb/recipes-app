@@ -65,6 +65,7 @@ function RecipeInProgress() {
   const key = recipeTypeToggle(type, 'Meal', 'Drink');
   const recipeType = type === 'meals' ? 'meals' : 'cocktails';
   const history = useHistory();
+
   useEffect(() => {
     const getRecipeDetails = async () => {
       const response = await requisition('lookup', 'i', id);
@@ -88,6 +89,26 @@ function RecipeInProgress() {
     getKeyValues('Ingredient', setIngredients);
     getKeyValues('Measure', setMeasures);
   }, [type, requisition, id]);
+
+  const handleClick = () => {
+    const doneRecipes = localStorage.getObj('doneRecipes');
+    // https://phoenixnap.com/kb/how-to-get-the-current-date-and-time-javascript
+    const today = new Date();
+    const date = `${today.getFullYear()}-${(today.getMonth() + 1)}-${today.getDate()}`;
+    const doneRecipeObj = {
+      id,
+      type: type === 'meals' ? 'comida' : 'bebida',
+      area: type === 'drinks' ? '' : detailsData.strArea,
+      category: detailsData.strCategory,
+      alcoholicOrNot: type === 'meals' ? '' : detailsData.strAlcoholic,
+      name: detailsData[`str${key}`],
+      image: detailsData[`str${key}Thumb`],
+      doneDate: date,
+      tags: [...[detailsData.strTags]],
+    };
+    localStorage.setObj('doneRecipes', [...doneRecipes, doneRecipeObj]);
+    history.push('/recipes-app/receitas-feitas');
+  };
 
   useEffect(() => {
     const inProgressRecipes = localStorage.getObj('inProgressRecipes');
@@ -164,7 +185,7 @@ function RecipeInProgress() {
           data-testid="finish-recipe-btn"
           disabled={ (usedIngredients[recipeType] && usedIngredients[recipeType][id])
           && usedIngredients[recipeType][id].length !== ingredients.length }
-          onClick={ () => history.push('/recipes-app/receitas-feitas') }
+          onClick={ () => handleClick() }
         >
           Finish Recipe
         </button>

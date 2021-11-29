@@ -27,6 +27,7 @@ export default function RecipeStatusButton({ recipeId, type }) {
       });
     }
   }, [setUsedIngredients]);
+
   useEffect(() => {
     const compareId = () => {
       const doneRecipes = localStorage.getObj('doneRecipes');
@@ -44,7 +45,7 @@ export default function RecipeStatusButton({ recipeId, type }) {
   }, [recipeId, key]);
 
   const handleClick = () => {
-    if (recipeStatus === 'Iniciar Receita') {
+    if (recipeStatus === 'Iniciar Receita' || recipeStatus === 'Continuar Receita') {
       return history.push(`${pathname}/in-progress`);
     }
   };
