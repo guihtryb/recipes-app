@@ -29,6 +29,7 @@ export default function RecipeStatusButton({ recipeId, type }) {
   }, [setUsedIngredients]);
 
   useEffect(() => {
+    setRecipeStatus('Iniciar Receita');
     const compareId = () => {
       const doneRecipes = localStorage.getObj('doneRecipes');
       const inProgress = localStorage

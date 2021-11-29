@@ -16,13 +16,16 @@ function FavoriteButton({ id,
 }) {
   const [favorited, setFavorited] = useState(false);
   const { favoritesData, setFavoritesData } = useContext(Context);
+  console.log(id, favorited);
 
   useEffect(() => {
+    setFavorited(false);
     const favRecipes = localStorage.getObj('favoriteRecipes');
     if (!favRecipes) localStorage.setObj('favoriteRecipes', []);
     const favRecipe = favRecipes && favRecipes.some((recipe) => recipe.id === id);
     if (favRecipe) setFavorited(true);
   }, [id]);
+  console.log(id, favorited);
 
   const handleFavButton = () => {
     setFavorited(!favorited);

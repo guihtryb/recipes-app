@@ -13,7 +13,7 @@ function Details() {
   const [detailsData, setDetailsData] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [measures, setMeasures] = useState([]);
-
+  console.log(detailsData);
   const location = useLocation();
   const path = location.pathname;
   const id = path.split('s/')[1];
