@@ -1,6 +1,16 @@
 <h1 align="center"> Recipes App </h1>
 <p align="center"> A recipes app with a hundred  drinks and meals recipes build with HTML, CSS, Javascript, React context API, React Hooks, and different API calls. </p>
 <div align="center">
+ 
+![Linux](https://img.shields.io/badge/-Linux-000000?style=flat&logo=linux)  
+![React](https://img.shields.io/badge/-React-000000?style=flat&logo=react)
+![Javascript](https://img.shields.io/badge/-JavaScript-151515?style=flat&logo=javascript)
+![CSS3](https://img.shields.io/badge/-CSS-3E86B8?style=flat&logo=css3)
+![HTML5](https://img.shields.io/badge/-HTML5-white?style=flat&logo=HTML5)
+[![Visual Studio Code](https://img.shields.io/badge/-VSCode-111111?style=flat&logo=visual-studio-code&logoColor=007ACC)](https://github.com/microsoft/vscode)
+
+
+  
 <kbd>
 <img src="src/assets/recipes.gif" />
 </kbd>
