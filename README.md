@@ -3,6 +3,7 @@
 <div align="center">
  
 ![React](https://img.shields.io/badge/-React-000000?style=flat&logo=react)
+![React](https://img.shields.io/badge/-React%20Hooks-222222?style=flat)
 ![Javascript](https://img.shields.io/badge/-JavaScript-151515?style=flat&logo=javascript)
 ![CSS3](https://img.shields.io/badge/-CSS-3E86B8?style=flat&logo=css3)
 ![HTML5](https://img.shields.io/badge/-HTML5-white?style=flat&logo=HTML5)
