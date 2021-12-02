@@ -15,7 +15,6 @@
 <img src="src/assets/recipes.gif" />
 </kbd>
 </div>
-<p align="center"><i>The app was designed to look better on small resolutions</i></p>
 
   <h2 align="center"> To run locally </h2>
   <ol>
