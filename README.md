@@ -24,4 +24,4 @@
   </ol>
   
   <h2 align="center"> Want to learn a recipe from any country? </h2>
-  <p align="center"> Enjoy <a href="guihtryb.github.io/recipes-app">clicking here!</a></p>
+  <p align="center"> Enjoy <a href="https://guihtryb.github.io/recipes-app">clicking here!</a></p>
