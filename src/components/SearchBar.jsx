@@ -20,7 +20,7 @@ export default function SearchBar({ title }) {
       }
       setSearchData(data.meals);
       if (data.meals.length === 1) {
-        history.push(`/comidas/${data.meals[0].idMeal}`);
+        history.push(`/recipes-app/comidas/${data.meals[0].idMeal}`);
       }
     }
     if (title === 'Bebidas') {
@@ -31,7 +31,7 @@ export default function SearchBar({ title }) {
       }
       setSearchData(data.drinks);
       if (data.drinks.length === 1) {
-        history.push(`/bebidas/${data.drinks[0].idDrink}`);
+        history.push(`/recipes-app/bebidas/${data.drinks[0].idDrink}`);
       }
     }
   };
