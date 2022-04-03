@@ -43,7 +43,7 @@ function Login(props) {
 
   return (
     <div data-testid="login-page" className="login-page">
-      <img src={ name } alt="Nomad' Recipes" />
+      <img id="nomad-recipes" src={ name } alt="Nomad' Recipes" />
       <div className="login-container">
         <input
           type="email"
