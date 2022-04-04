@@ -31,7 +31,8 @@
   border-radius: 10px;
   font-size: 18px;
   font-weight: 800;
-  height: 7vh;
+  height: 9vw;
+  max-height: 50px;
   margin: 7px 0;
   outline: none;
   text-align: center;
@@ -48,5 +49,7 @@
   font-family: Sanchez , serif;
   font-weight: 700;
   height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
